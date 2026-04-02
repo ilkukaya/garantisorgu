@@ -1,7 +1,7 @@
 ---
-import Layout from '../components/Layout.astro';
-import MarkaKarti from '../components/MarkaKarti.astro';
-import { loadMarkalar } from '../lib/dataLoader';
+import Layout from '../../components/Layout.astro';
+import MarkaKarti from '../../components/MarkaKarti.astro';
+import { loadMarkalar } from '../../lib/dataLoader';
 
 const markalar = loadMarkalar();
 const sortedMarkalar = [...markalar.markalar].sort((a, b) => a.ad.localeCompare(b.ad, 'tr'));
