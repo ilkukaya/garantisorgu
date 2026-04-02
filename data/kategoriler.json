@@ -1,0 +1,100 @@
+{
+  "kategoriler": [
+    {
+      "id": "cep-telefonu",
+      "ad": "Cep Telefonu",
+      "slug": "cep-telefonu",
+      "ikon": "📱",
+      "aciklama": "Akıllı telefon ve özellikli telefon garantileri",
+      "populer_markalar": ["samsung", "apple", "xiaomi", "huawei"]
+    },
+    {
+      "id": "televizyon",
+      "ad": "Televizyon",
+      "slug": "televizyon",
+      "ikon": "📺",
+      "aciklama": "LED, OLED, QLED TV garantileri",
+      "populer_markalar": ["samsung", "lg", "sony", "arcelik", "vestel"]
+    },
+    {
+      "id": "laptop",
+      "ad": "Laptop / Dizüstü",
+      "slug": "laptop",
+      "ikon": "💻",
+      "aciklama": "Dizüstü bilgisayar garantileri",
+      "populer_markalar": ["apple", "lenovo", "hp", "samsung", "huawei"]
+    },
+    {
+      "id": "buzdolabi",
+      "ad": "Buzdolabı",
+      "slug": "buzdolabi",
+      "ikon": "🧊",
+      "aciklama": "Buzdolabı ve derin dondurucu garantileri",
+      "populer_markalar": ["arcelik", "beko", "samsung", "lg", "bosch"]
+    },
+    {
+      "id": "camasir-makinesi",
+      "ad": "Çamaşır Makinesi",
+      "slug": "camasir-makinesi",
+      "ikon": "🫧",
+      "aciklama": "Çamaşır makinesi garantileri (motor garantisi dahil)",
+      "populer_markalar": ["arcelik", "beko", "samsung", "lg", "bosch"]
+    },
+    {
+      "id": "bulasik-makinesi",
+      "ad": "Bulaşık Makinesi",
+      "slug": "bulasik-makinesi",
+      "ikon": "🍽️",
+      "aciklama": "Bulaşık makinesi garantileri",
+      "populer_markalar": ["arcelik", "beko", "bosch", "siemens"]
+    },
+    {
+      "id": "klima",
+      "ad": "Klima",
+      "slug": "klima",
+      "ikon": "❄️",
+      "aciklama": "Klima ve hava koşullandırma cihazları garantileri",
+      "populer_markalar": ["arcelik", "beko", "lg", "samsung", "vestel"]
+    },
+    {
+      "id": "elektrikli-supurge",
+      "ad": "Elektrikli Süpürge",
+      "slug": "elektrikli-supurge",
+      "ikon": "🌀",
+      "aciklama": "Elektrikli süpürge ve temizlik cihazları garantileri",
+      "populer_markalar": ["dyson", "philips", "bosch", "karcher"]
+    },
+    {
+      "id": "kucuk-ev-aleti",
+      "ad": "Küçük Ev Aleti",
+      "slug": "kucuk-ev-aleti",
+      "ikon": "☕",
+      "aciklama": "Kahve makinesi, tost makinesi, blender vb.",
+      "populer_markalar": ["tefal", "philips", "bosch", "arcelik"]
+    },
+    {
+      "id": "tablet",
+      "ad": "Tablet",
+      "slug": "tablet",
+      "ikon": "📲",
+      "aciklama": "Tablet ve e-okuyucu garantileri",
+      "populer_markalar": ["apple", "samsung", "lenovo", "huawei"]
+    },
+    {
+      "id": "kulaklik",
+      "ad": "Kulaklık",
+      "slug": "kulaklik",
+      "ikon": "🎧",
+      "aciklama": "Kulaklık ve ses aksesuarları garantileri",
+      "populer_markalar": ["apple", "samsung", "sony", "xiaomi"]
+    },
+    {
+      "id": "akilli-saat",
+      "ad": "Akıllı Saat",
+      "slug": "akilli-saat",
+      "ikon": "⌚",
+      "aciklama": "Akıllı saat ve giyilebilir teknoloji garantileri",
+      "populer_markalar": ["apple", "samsung", "huawei", "xiaomi"]
+    }
+  ]
+}

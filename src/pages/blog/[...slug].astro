@@ -1,0 +1,655 @@
+---
+import Layout from '../../components/Layout.astro';
+import blogPosts from '../../../data/blog-posts.json';
+
+export function getStaticPaths() {
+  return blogPosts.posts.map((post: any) => ({
+    params: { slug: post.slug },
+    props: { post }
+  }));
+}
+
+const { post } = Astro.props;
+
+const blogContent: Record<string, string> = {
+  'garanti-haklarim-neler': `
+<div class="prose prose-sm sm:prose max-w-none text-gray-700">
+  <p class="lead text-lg text-gray-600 mb-6">
+    Türkiye'de tüketici olarak sahip olduğunuz garanti haklarını bilmek, alışveriş yaparken en güçlü
+    silahınızdır. 6502 sayılı Tüketici Koruma Kanunu, sizi satıcı ve üretici firmalara karşı korur.
+    Bu rehberde, bilmeniz gereken tüm garanti haklarını detaylı olarak açıklıyoruz.
+  </p>
+
+  <h2 class="text-xl font-bold text-gray-900 mt-8 mb-4">6502 Sayılı Tüketici Koruma Kanunu Nedir?</h2>
+  <p>
+    6502 sayılı Tüketici Koruma Kanunu, 2014 yılında yürürlüğe giren ve tüketicilerin haklarını
+    düzenleyen temel yasal düzenlemedir. Bu kanun, Avrupa Birliği tüketici hakları direktifleri
+    ile uyumlu olarak hazırlanmıştır ve Türkiye'deki tüm tüketicileri kapsar.
+  </p>
+  <p>
+    Kanunun temel amacı, tüketiciyi satıcıya karşı korumak, adil ticaret uygulamalarını
+    teşvik etmek ve tüketici ile satıcı arasındaki güç dengesini dengelemektir.
+  </p>
+
+  <h2 class="text-xl font-bold text-gray-900 mt-8 mb-4">Zorunlu Garanti Süreleri</h2>
+  <p>
+    6502 sayılı kanuna göre, Türkiye'de satılan ürünler için zorunlu garanti süreleri
+    ürünün satış fiyatına göre belirlenir:
+  </p>
+  <ul class="list-disc pl-5 space-y-2">
+    <li><strong>4.750 TL ve altı ürünler:</strong> 6 ay garanti</li>
+    <li><strong>4.750 TL - 19.000 TL arası ürünler:</strong> 1 yıl garanti</li>
+    <li><strong>19.000 TL üzeri ürünler:</strong> 2 yıl garanti</li>
+  </ul>
+  <p>
+    Ancak pratikte, Türkiye'deki büyük elektronik ve beyaz eşya markalarının neredeyse tamamı
+    ürünlerine en az 2 yıl garanti vermektedir. Bu, sektör standardı haline gelmiştir.
+  </p>
+  <p>
+    Ayrıca bazı markalar, belirli bileşenler için ek garanti süreleri sunar:
+  </p>
+  <ul class="list-disc pl-5 space-y-2">
+    <li><strong>Buzdolabı kompresörü:</strong> 5-10 yıl ek garanti</li>
+    <li><strong>Çamaşır makinesi motoru:</strong> 5-10 yıl ek garanti</li>
+    <li><strong>TV paneli:</strong> 3 yıl ek garanti (OLED/QLED modellerde)</li>
+  </ul>
+
+  <h2 class="text-xl font-bold text-gray-900 mt-8 mb-4">Garanti Belgesi Zorunlu mu?</h2>
+  <p>
+    Evet, Türkiye'de garanti belgesi zorunludur. Ancak önemli bir nokta: <strong>fatura,
+    garanti belgesi yerine geçer</strong>. Yani garanti belgenizi kaybetmiş olsanız bile
+    faturanız varsa garanti hakkınız devam eder.
+  </p>
+  <p>
+    Garanti belgesinde şu bilgiler bulunmalıdır:
+  </p>
+  <ul class="list-disc pl-5 space-y-1">
+    <li>Üretici veya ithalatçı firmanın unvanı ve adresi</li>
+    <li>Ürünün cinsi, markası ve modeli</li>
+    <li>Garanti süresi</li>
+    <li>Yetkili servislerin isim ve adresleri</li>
+    <li>Garanti kapsamı ve kapsam dışı durumlar</li>
+  </ul>
+
+  <h2 class="text-xl font-bold text-gray-900 mt-8 mb-4">Garanti Kapsamı Nelerdir?</h2>
+  <p>
+    Garanti, ürünün normal kullanım koşullarında ortaya çıkan <strong>imalat hatalarını</strong>
+    kapsar. Garanti kapsamında:
+  </p>
+  <ul class="list-disc pl-5 space-y-1">
+    <li>Ücretsiz tamir veya değiştirme</li>
+    <li>Gerekli durumlarda ürünün ücretsiz servise alınması</li>
+    <li>Tamir süresince benzer bir ürünün temini (talep halinde)</li>
+  </ul>
+
+  <h2 class="text-xl font-bold text-gray-900 mt-8 mb-4">Garanti Kapsamı Dışı Durumlar</h2>
+  <p>
+    Aşağıdaki durumlar garanti kapsamı dışında kalır:
+  </p>
+  <ul class="list-disc pl-5 space-y-1">
+    <li>Kullanıcı kaynaklı hasarlar (düşürme, çarpma)</li>
+    <li>Su/sıvı hasarı</li>
+    <li>Yetkisiz servis müdahalesi</li>
+    <li>Doğal afet hasarları</li>
+    <li>Normal aşınma ve yıpranma</li>
+    <li>Tüketilebilir parçalar (batarya, filtre vb.)</li>
+    <li>Uyumsuz aksesuar kullanımından kaynaklanan arızalar</li>
+  </ul>
+
+  <h2 class="text-xl font-bold text-gray-900 mt-8 mb-4">Ürün Değiştirme ve İade Hakları</h2>
+  <p>
+    Garanti süresi içinde arızalanan ürün için şu haklara sahipsiniz:
+  </p>
+  <ul class="list-disc pl-5 space-y-2">
+    <li>
+      <strong>Ücretsiz tamir:</strong> İlk hakkınız ücretsiz tamirdir. Yetkili servis
+      arızayı ücretsiz gidermekle yükümlüdür.
+    </li>
+    <li>
+      <strong>Ürün değişimi:</strong> Aynı arızanın tekrarlaması veya tamirin 30 iş gününü
+      aşması durumunda ürün değişimi talep edebilirsiniz.
+    </li>
+    <li>
+      <strong>İnternetten alışverişte cayma hakkı:</strong> Mesafeli satış sözleşmeleri
+      kapsamında, internetten aldığınız ürünleri 14 gün içinde koşulsuz iade edebilirsiniz.
+      Bu hak, garanti hakkından bağımsızdır.
+    </li>
+  </ul>
+
+  <h2 class="text-xl font-bold text-gray-900 mt-8 mb-4">TÜKTDER ve Şikayet Yolları</h2>
+  <p>
+    Garanti hakkınız ihlal edildiğinde aşağıdaki yollara başvurabilirsiniz:
+  </p>
+  <ol class="list-decimal pl-5 space-y-2">
+    <li>
+      <strong>İlk adım: Yetkili servise başvurun.</strong> Arızayı bildirin ve servis
+      kayıt numarasını alın.
+    </li>
+    <li>
+      <strong>İkinci adım: Tüketici Hakem Heyeti.</strong> İl veya ilçe tüketici hakem
+      heyetlerine başvurabilirsiniz. 2026 yılı itibarıyla 15.000 TL'ye kadar olan
+      uyuşmazlıklar için ilçe hakem heyetlerine, üzeri için il hakem heyetlerine
+      başvurulur.
+    </li>
+    <li>
+      <strong>Üçüncü adım: Tüketici Mahkemesi.</strong> Hakem heyeti kararına itiraz
+      veya doğrudan tüketici mahkemesine başvuru yapabilirsiniz.
+    </li>
+    <li>
+      <strong>Dördüncü adım: CİMER.</strong> Cumhurbaşkanlığı İletişim Merkezi üzerinden
+      şikayetinizi iletebilirsiniz.
+    </li>
+  </ol>
+
+  <h2 class="text-xl font-bold text-gray-900 mt-8 mb-4">Önemli İpuçları</h2>
+  <ul class="list-disc pl-5 space-y-2">
+    <li>Faturanızı her zaman saklayın — dijital kopya da geçerlidir</li>
+    <li>Garanti belgesini ürün kutusuyla birlikte muhafaza edin</li>
+    <li>Servis taleplerinizi yazılı olarak yapın ve kayıt numarası alın</li>
+    <li>İnternetten alırken "garanti belgesi" ibaresini kontrol edin</li>
+    <li>Gri ithalat (kaçak) ürünlerin Türkiye garantisi olmayabilir</li>
+  </ul>
+
+  <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-6">
+    <p class="text-sm text-blue-800">
+      <strong>Yasal Uyarı:</strong> Bu içerik genel bilgilendirme amaçlıdır ve resmi hukuki
+      danışmanlık niteliği taşımaz. Güncel yasal düzenlemeler için bir avukata veya
+      Tüketici Hakem Heyeti'ne başvurunuz.
+    </p>
+  </div>
+</div>
+  `,
+  'uzatilmis-garanti-deger-mi': `
+<div class="prose prose-sm sm:prose max-w-none text-gray-700">
+  <p class="lead text-lg text-gray-600 mb-6">
+    Yeni bir elektronik ürün aldığınızda satıcı size "Uzatılmış garanti almak ister misiniz?"
+    diye sorar. Peki bu ekstra maliyet gerçekten değiyor mu? Bu yazıda, uzatılmış garantinin
+    artılarını, eksilerini ve hangi durumlarda mantıklı olduğunu detaylı olarak inceliyoruz.
+  </p>
+
+  <h2 class="text-xl font-bold text-gray-900 mt-8 mb-4">Uzatılmış Garanti Nedir?</h2>
+  <p>
+    Uzatılmış garanti, yasal garanti süresinin bitiminden sonra başlayan ve ek bir ücret
+    karşılığında satın alınan garanti hizmetidir. Genellikle 1-3 yıl ek süre sunar ve
+    yasal garantiyle aynı kapsamda hizmet verir.
+  </p>
+  <p>
+    Türkiye'de uzatılmış garanti seçenekleri şunlardır:
+  </p>
+  <ul class="list-disc pl-5 space-y-1">
+    <li><strong>Marka uzatma programları:</strong> Samsung Care+, AppleCare+</li>
+    <li><strong>Mağaza uzatma garantileri:</strong> Teknosa, MediaMarkt, Vatan Bilgisayar</li>
+    <li><strong>Sigorta şirketleri:</strong> Kasko benzeri elektronik cihaz sigortaları</li>
+  </ul>
+
+  <h2 class="text-xl font-bold text-gray-900 mt-8 mb-4">Maliyet Analizi: Örnek Senaryolar</h2>
+
+  <h3 class="text-lg font-semibold text-gray-800 mt-6 mb-3">Senaryo 1: Buzdolabı (25.000 TL)</h3>
+  <ul class="list-disc pl-5 space-y-1">
+    <li>Yasal garanti: 2 yıl</li>
+    <li>Uzatılmış garanti maliyeti: ~1.500-2.500 TL (3 yıl ek)</li>
+    <li>Olası arıza maliyeti (kompresör değişimi): 5.000-10.000 TL</li>
+    <li><strong>Sonuç:</strong> Uzatılmış garanti almanız mantıklı olabilir</li>
+  </ul>
+
+  <h3 class="text-lg font-semibold text-gray-800 mt-6 mb-3">Senaryo 2: Akıllı Telefon (30.000 TL)</h3>
+  <ul class="list-disc pl-5 space-y-1">
+    <li>Yasal garanti: 2 yıl</li>
+    <li>Samsung Care+ maliyeti: ~2.000-4.000 TL/yıl</li>
+    <li>Olası arıza maliyeti (ekran değişimi): 3.000-8.000 TL</li>
+    <li><strong>Sonuç:</strong> Dikkatli kullanıyorsanız gerekmeyebilir</li>
+  </ul>
+
+  <h3 class="text-lg font-semibold text-gray-800 mt-6 mb-3">Senaryo 3: Küçük Ev Aleti (2.000 TL)</h3>
+  <ul class="list-disc pl-5 space-y-1">
+    <li>Yasal garanti: 2 yıl</li>
+    <li>Uzatılmış garanti maliyeti: ~300-500 TL</li>
+    <li>Yeni ürün fiyatı: 2.000 TL</li>
+    <li><strong>Sonuç:</strong> Genellikle değmez</li>
+  </ul>
+
+  <h2 class="text-xl font-bold text-gray-900 mt-8 mb-4">Hangi Ürünlerde Uzatılmış Garanti Mantıklı?</h2>
+  <div class="grid sm:grid-cols-2 gap-4 my-6">
+    <div class="bg-emerald-50 border border-emerald-200 rounded-lg p-4">
+      <h3 class="font-bold text-emerald-800 mb-2">✅ Mantıklı Olabilecek Ürünler</h3>
+      <ul class="list-disc pl-5 text-sm text-emerald-700 space-y-1">
+        <li>Buzdolabı ve derin dondurucu</li>
+        <li>Çamaşır makinesi ve bulaşık makinesi</li>
+        <li>Televizyon (özellikle OLED/QLED)</li>
+        <li>Laptop / dizüstü bilgisayar</li>
+        <li>Klima</li>
+      </ul>
+    </div>
+    <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+      <h3 class="font-bold text-red-800 mb-2">❌ Genellikle Gereksiz</h3>
+      <ul class="list-disc pl-5 text-sm text-red-700 space-y-1">
+        <li>Küçük ev aletleri (tost makinesi, blender)</li>
+        <li>Kulaklık ve aksesuarlar</li>
+        <li>Ucuz tabletler</li>
+        <li>Elektrikli süpürge (düşük fiyatlı)</li>
+        <li>Yedek parçası ucuz ürünler</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="text-xl font-bold text-gray-900 mt-8 mb-4">Resmi Marka Uzatmaları vs Üçüncü Taraf</h2>
+  <p>
+    İki ana uzatılmış garanti türü vardır:
+  </p>
+  <ul class="list-disc pl-5 space-y-2">
+    <li>
+      <strong>Resmi marka uzatmaları</strong> (Samsung Care+, AppleCare+): Genellikle daha
+      kapsamlıdır, orijinal yedek parça kullanılır, marka yetkili servisleri hizmet verir.
+      Ancak daha pahalıdır.
+    </li>
+    <li>
+      <strong>Mağaza/üçüncü taraf garantiler:</strong> Daha uygun fiyatlı olabilir ancak
+      kapsam ve servis kalitesi değişkenlik gösterebilir. Sözleşmeyi dikkatlice okuyun.
+    </li>
+  </ul>
+
+  <h2 class="text-xl font-bold text-gray-900 mt-8 mb-4">Karar Ağacı: Uzatmalı mıyım?</h2>
+  <ol class="list-decimal pl-5 space-y-2">
+    <li><strong>Ürünün fiyatı 10.000 TL'den fazla mı?</strong> Evet ise devam et.</li>
+    <li><strong>Tamir maliyeti, uzatma garanti maliyetinin 3 katından fazla mı?</strong> Evet ise devam et.</li>
+    <li><strong>Ürünü günlük/yoğun kullanacak mısınız?</strong> Evet ise devam et.</li>
+    <li><strong>Mevcut garanti süresince arıza yaşadınız mı?</strong> Evet ise kesinlikle alın.</li>
+  </ol>
+  <p>
+    Bu dört soruya da "evet" yanıtı verdiyseniz, uzatılmış garanti sizin için mantıklı
+    olabilir.
+  </p>
+
+  <h2 class="text-xl font-bold text-gray-900 mt-8 mb-4">Popüler Uzatma Garanti Programları</h2>
+  <ul class="list-disc pl-5 space-y-2">
+    <li><strong>Samsung Care+:</strong> Ekran kırılması dahil kapsamlı koruma. Telefon, tablet ve saat için mevcut.</li>
+    <li><strong>AppleCare+:</strong> Apple ürünleri için 2 yıl ek garanti. Kaza hasarı koruması dahil.</li>
+    <li><strong>Teknosa Uzatılmış Garanti:</strong> Çeşitli markalar için 1-3 yıl ek garanti.</li>
+    <li><strong>MediaMarkt Garanti Paketi:</strong> Geniş ürün yelpazesi için uzatma seçenekleri.</li>
+  </ul>
+
+  <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-6">
+    <p class="text-sm text-blue-800">
+      <strong>İpucu:</strong> Uzatılmış garanti satın almadan önce, ürünün arıza oranlarını
+      ve yaygın arıza türlerini araştırın. Bazı ürün modelleri özellikle sorunlu olabilir
+      ve bu durumda uzatma garanti daha değerli hale gelir.
+    </p>
+  </div>
+</div>
+  `,
+  'garanti-disi-kalan-arizalar': `
+<div class="prose prose-sm sm:prose max-w-none text-gray-700">
+  <p class="lead text-lg text-gray-600 mb-6">
+    Garanti kapsamı, tüketicilerin en çok kafasının karıştığı konulardan biridir. "Bu arıza
+    garanti kapsamında mı?" sorusunun cevabı, hasarın türüne ve nedenine göre değişir.
+    Bu yazıda garanti dışı kalan tüm durumları detaylı olarak açıklıyoruz.
+  </p>
+
+  <h2 class="text-xl font-bold text-gray-900 mt-8 mb-4">Kullanıcı Kaynaklı Hasarlar</h2>
+  <p>
+    En yaygın garanti dışı durum, kullanıcının kendi hatalı kullanımından kaynaklanan
+    hasarlardır. Bunlar şunları içerir:
+  </p>
+  <ul class="list-disc pl-5 space-y-1">
+    <li><strong>Düşürme ve çarpma:</strong> Telefon, tablet veya laptopun düşürülmesi sonucu oluşan hasarlar</li>
+    <li><strong>Yanlış voltaj:</strong> Uygun olmayan elektrik prizine takma</li>
+    <li><strong>Yanlış kullanım:</strong> Ürünün kullanım kılavuzunda belirtilen şekilde kullanılmaması</li>
+    <li><strong>Aşırı yükleme:</strong> Ürünün kapasitesinin üzerinde kullanılması</li>
+  </ul>
+
+  <h2 class="text-xl font-bold text-gray-900 mt-8 mb-4">Su ve Nem Hasarı</h2>
+  <p>
+    Su hasarı, garanti kapsamı dışındaki en yaygın durumlardan biridir. Ancak önemli
+    istisnalar vardır:
+  </p>
+  <ul class="list-disc pl-5 space-y-2">
+    <li>
+      <strong>Standart cihazlar:</strong> Su teması garanti dışıdır. Yağmur, dökülen sıvı,
+      nemli ortamda kullanım sonucu oluşan hasarlar kapsam dışıdır.
+    </li>
+    <li>
+      <strong>IP68/IP69 sertifikalı cihazlar:</strong> Bazı telefonlar su geçirmezlik
+      özelliğine sahiptir. Ancak bu özellik bile genellikle garanti kapsamında değildir.
+      Üreticiler, su geçirmezliğin zamanla azalabileceğini belirtir.
+    </li>
+    <li>
+      <strong>Dyson ve benzeri:</strong> Islak zemin temizliği için tasarlanmış cihazlar
+      dışında, su teması garanti dışıdır.
+    </li>
+  </ul>
+
+  <h2 class="text-xl font-bold text-gray-900 mt-8 mb-4">Ekran Çatlağı ve Kırılması</h2>
+  <p>
+    Ekran hasarları neredeyse her zaman garanti kapsamı dışındadır. İstisnalar:
+  </p>
+  <ul class="list-disc pl-5 space-y-1">
+    <li>Üretim hatası sonucu kendiliğinden oluşan ekran sorunları (nadirdir)</li>
+    <li>AppleCare+ veya Samsung Care+ gibi kaza koruma programları (ek ücretli)</li>
+  </ul>
+  <p>
+    Ekran değişimi maliyetleri yüksektir. iPhone 15 Pro için orijinal ekran değişimi
+    8.000-12.000 TL arasında değişebilir.
+  </p>
+
+  <h2 class="text-xl font-bold text-gray-900 mt-8 mb-4">Yetkisiz Servis Müdahalesi</h2>
+  <p>
+    Ürünü yetkili olmayan bir servise götürmeniz veya kendiniz tamir etmeniz, garantiyi
+    geçersiz kılabilir. Bu durum özellikle şunları içerir:
+  </p>
+  <ul class="list-disc pl-5 space-y-1">
+    <li>Mahalle tamircisinde yapılan onarımlar</li>
+    <li>Kullanıcının kendi yaptığı müdahaleler</li>
+    <li>Yetkisiz yedek parça kullanımı</li>
+    <li>Jailbreak/root işlemi (telefon ve tabletler)</li>
+  </ul>
+
+  <h2 class="text-xl font-bold text-gray-900 mt-8 mb-4">Doğal Afet Hasarları</h2>
+  <p>
+    Deprem, sel, yangın, yıldırım çarpması gibi doğal afetler sonucu oluşan hasarlar
+    standart garanti kapsamı dışındadır. Bu tür hasarlar için:
+  </p>
+  <ul class="list-disc pl-5 space-y-1">
+    <li>Ev sigortası (konut sigortası) kapsamında olabilir</li>
+    <li>AFAD veya Kızılay gibi kuruluşlardan yardım alabilirsiniz</li>
+    <li>Bazı markalar doğal afet durumlarında özel destek sağlayabilir</li>
+  </ul>
+
+  <h2 class="text-xl font-bold text-gray-900 mt-8 mb-4">Tüketilebilir Parçalar</h2>
+  <p>
+    Bazı parçalar "tüketilebilir" olarak kabul edilir ve garanti süreleri daha kısadır:
+  </p>
+  <ul class="list-disc pl-5 space-y-1">
+    <li><strong>Batarya:</strong> Genellikle 1 yıl veya 500 şarj döngüsü</li>
+    <li><strong>Filtreler:</strong> Elektrikli süpürge ve klima filtreleri</li>
+    <li><strong>Kauçuk parçalar:</strong> Conta, kayış gibi parçalar</li>
+    <li><strong>Aydınlatma:</strong> LED ampuller (bazı durumlarda)</li>
+  </ul>
+
+  <h2 class="text-xl font-bold text-gray-900 mt-8 mb-4">Yazılım Sorunları</h2>
+  <p>
+    Yazılım sorunları genellikle garanti kapsamında değildir, ancak istisnalar vardır:
+  </p>
+  <ul class="list-disc pl-5 space-y-1">
+    <li>Fabrika hatası yazılım sorunları garanti kapsamında olabilir</li>
+    <li>Kullanıcının yüklediği uygulamalardan kaynaklanan sorunlar kapsam dışıdır</li>
+    <li>Virüs ve kötü amaçlı yazılım hasarları kapsam dışıdır</li>
+  </ul>
+
+  <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mt-6">
+    <p class="text-sm text-yellow-800">
+      <strong>Önemli:</strong> Garanti kapsamı markadan markaya değişiklik gösterebilir.
+      Kesin bilgi için ürününüzün garanti belgesini okuyun veya markanın müşteri
+      hizmetlerine başvurun.
+    </p>
+  </div>
+</div>
+  `,
+  'ikinci-el-urun-garanti': `
+<div class="prose prose-sm sm:prose max-w-none text-gray-700">
+  <p class="lead text-lg text-gray-600 mb-6">
+    İkinci el ürün almak, bütçe dostu bir seçenek olabilir. Ancak "Bu ürün hala garanti
+    kapsamında mı?" sorusu kafaları karıştırır. Bu yazıda, ikinci el ürünlerde garanti
+    haklarınızı detaylı olarak açıklıyoruz.
+  </p>
+
+  <h2 class="text-xl font-bold text-gray-900 mt-8 mb-4">İkinci El Ürünlerde Garanti Devam Eder mi?</h2>
+  <p>
+    Evet, ikinci el ürünlerde garanti genellikle devam eder. Yasal garanti, <strong>ürüne
+    bağlıdır</strong>, sahibine değil. Garanti süresi, ilk satın alma (fatura) tarihinden
+    itibaren başlar ve belirlenen süre boyunca geçerli kalır.
+  </p>
+  <p>
+    Örneğin: 2025 Ocak'ta alınan bir buzdolabının 2 yıl garantisi vardır. Bu buzdolabını
+    2025 Temmuz'da ikinci el olarak aldıysanız, garanti 2027 Ocak'a kadar devam eder.
+  </p>
+
+  <h2 class="text-xl font-bold text-gray-900 mt-8 mb-4">Faturanın Önemi</h2>
+  <p>
+    İkinci el ürün alırken en kritik belge <strong>orijinal fatura</strong>dır. Fatura olmadan
+    garanti talebinde bulunmak çok zordur. Faturada şunlar olmalıdır:
+  </p>
+  <ul class="list-disc pl-5 space-y-1">
+    <li>Ürünün seri numarası veya modeli</li>
+    <li>Satın alma tarihi</li>
+    <li>Satıcı firma bilgileri</li>
+  </ul>
+  <p>
+    Faturanız yoksa, orijinal alıcıdan fatura fotokopisi veya dijital kopyasını isteyin.
+    Bazı markalar, seri numarası üzerinden garanti sorgulaması yapabilmektedir.
+  </p>
+
+  <h2 class="text-xl font-bold text-gray-900 mt-8 mb-4">Garanti Devri Mümkün mü?</h2>
+  <p>
+    Türkiye'de garanti devri konusunda net bir yasal düzenleme yoktur. Pratikte:
+  </p>
+  <ul class="list-disc pl-5 space-y-2">
+    <li>
+      <strong>Çoğu büyük marka</strong> (Arçelik, Beko, Samsung, LG vb.) ikinci el sahiplerine
+      de garanti hizmeti vermektedir. Ürünün seri numarası ve fatura yeterlidir.
+    </li>
+    <li>
+      <strong>Bazı markalar</strong> sadece ilk alıcıya garanti hizmeti verebilir. Bu durum
+      garanti belgesinde belirtilir.
+    </li>
+    <li>
+      <strong>Apple</strong> gibi bazı markalar, seri numarası üzerinden garanti sorgulaması
+      yapar ve ikinci el sahiplerine de hizmet verir.
+    </li>
+  </ul>
+
+  <h2 class="text-xl font-bold text-gray-900 mt-8 mb-4">Platformların Garanti Politikaları</h2>
+
+  <h3 class="text-lg font-semibold text-gray-800 mt-4 mb-2">Letgo ve Dolap</h3>
+  <p>
+    Bu platformlar genellikle C2C (tüketiciden tüketiciye) satış yapar. Satıcılar bireysel
+    olduğu için garanti devri konusunda platformun bir politikası yoktur. Garanti durumu
+    tamamen ürünün markasına ve faturanın durumuna bağlıdır.
+  </p>
+
+  <h3 class="text-lg font-semibold text-gray-800 mt-4 mb-2">Sahibinden</h3>
+  <p>
+    Sahibinden'de hem bireysel hem de kurumsal satıcılar bulunur. Kurumsal satıcılar
+    (ikinci el eşya dükkanları) genellikle 3-6 ay kendi garantilerini sunar.
+  </p>
+
+  <h3 class="text-lg font-semibold text-gray-800 mt-4 mb-2">Yenilenmiş Ürün Siteleri</h3>
+  <p>
+    Trendyol Yenilenmiş, Hepsiburada Yenilenmiş ve Amazon Renewed gibi platformlar,
+    yenilenmiş ürünlere genellikle 6-12 ay garanti sunar. Bu garantiler platform veya
+    satıcı tarafından sağlanır.
+  </p>
+
+  <h2 class="text-xl font-bold text-gray-900 mt-8 mb-4">İkinci El Alırken Dikkat Edilmesi Gerekenler</h2>
+  <ul class="list-disc pl-5 space-y-2">
+    <li>Orijinal faturayı mutlaka isteyin</li>
+    <li>Ürünün seri numarasını markanın web sitesinden sorgulayın</li>
+    <li>Garanti belgesinin olup olmadığını kontrol edin</li>
+    <li>Ürünün yetkili servisten geçmiş olup olmadığını sorun</li>
+    <li>Fiziksel hasarları dikkatlice inceleyin</li>
+    <li>Ürünü teslim almadan önce test edin</li>
+  </ul>
+
+  <h2 class="text-xl font-bold text-gray-900 mt-8 mb-4">İkinci El İçin Garanti Süresi Hesaplama</h2>
+  <p>
+    Garanti süresi her zaman <strong>ilk satın alma tarihinden</strong> itibaren başlar.
+    İkinci el olarak aldığınız tarih değil, orijinal fatura tarihi esas alınır.
+  </p>
+  <p>
+    Sitemizin <a href="/sorgula" class="text-primary hover:underline">garanti sorgulama aracını</a> kullanarak,
+    ikinci el aldığınız ürünün garanti durumunu kolayca hesaplayabilirsiniz.
+  </p>
+
+  <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-6">
+    <p class="text-sm text-blue-800">
+      <strong>İpucu:</strong> İkinci el ürün alırken, satıcıdan ürünün garanti belgesinin
+      fotokopisini ve orijinal faturanın kopyasını isteyin. Bu belgeler olmadan garanti
+      talebinde bulunmak zor olabilir.
+    </p>
+  </div>
+</div>
+  `,
+  'garanti-bitmeden-once-yapilacaklar': `
+<div class="prose prose-sm sm:prose max-w-none text-gray-700">
+  <p class="lead text-lg text-gray-600 mb-6">
+    Garanti süreniz dolmak üzere mi? Son şansı kaçırmayın! Garantinizin bitmesinden önce
+    yapabileceğiniz 7 kritik adım var. Bu adımlar, hem ürününüzün ömrünü uzatabilir hem de
+    olası masraflardan kurtarabilir.
+  </p>
+
+  <h2 class="text-xl font-bold text-gray-900 mt-8 mb-4">1. Ürünü Yetkili Servise Tam Kontrol Ettirin</h2>
+  <p>
+    Garantiniz bitmeden önce, ürünü yetkili servise götürerek ücretsiz genel kontrol
+    yaptırabilirsiniz. Bu, garantinizin en değerli hakkıdır. Servis, potansiyel sorunları
+    tespit edip garanti kapsamında tamir edebilir.
+  </p>
+  <p>
+    <strong>Ne söylemelisiniz:</strong> "Garantim bitmek üzere, genel kontrol ve bakım
+    yaptırmak istiyorum." Çoğu marka, bu talebi garanti kapsamında karşılar.
+  </p>
+
+  <h2 class="text-xl font-bold text-gray-900 mt-8 mb-4">2. Batarya Sağlığını Kontrol Ettirin</h2>
+  <p>
+    Telefon, laptop ve tablet gibi cihazlarda batarya en çok sorun çıkaran bileşendir.
+    Garantiniz bitmeden batarya sağlığını kontrol ettirin:
+  </p>
+  <ul class="list-disc pl-5 space-y-1">
+    <li><strong>iPhone:</strong> Ayarlar > Pil > Pil Sağlığı</li>
+    <li><strong>Android:</strong> AccuBattery uygulaması veya marka diagnostik aracı</li>
+    <li><strong>Laptop:</strong> Windows: powercfg /batteryreport, Mac: Sistem Raporu</li>
+  </ul>
+  <p>
+    Batarya kapasitesi %80'in altındaysa, garanti kapsamında değişim talep edebilirsiniz.
+  </p>
+
+  <h2 class="text-xl font-bold text-gray-900 mt-8 mb-4">3. Tüm Belge ve Faturaları Bir Araya Toplayın</h2>
+  <p>
+    Garanti bitmeden önce tüm belgelerinizi düzenleyin:
+  </p>
+  <ul class="list-disc pl-5 space-y-1">
+    <li>Orijinal fatura (dijital kopya dahil)</li>
+    <li>Garanti belgesi</li>
+    <li>Servis kayıtları ve fişler</li>
+    <li>Ürün kutusu ve aksesuarlar</li>
+  </ul>
+  <p>
+    Bu belgeler, hem garanti talepleri hem de ileride ikinci el satış için önemlidir.
+  </p>
+
+  <h2 class="text-xl font-bold text-gray-900 mt-8 mb-4">4. Uzatılmış Garanti Kararını Verin</h2>
+  <p>
+    Garantiniz bitmeden önce uzatılmış garanti satın alma seçeneğini değerlendirin.
+    Bazı markalar, mevcut garanti süresi bitmeden uzatma paketi satın almanıza izin verir.
+  </p>
+  <p>
+    <strong>Ne zaman mantıklı:</strong>
+  </p>
+  <ul class="list-disc pl-5 space-y-1">
+    <li>Ürün yüksek değerliyse (buzdolabı, TV, laptop)</li>
+    <li>Garanti süresince arıza yaşadıysanız</li>
+    <li>Ürünü yoğun kullanıyorsanız</li>
+  </ul>
+
+  <h2 class="text-xl font-bold text-gray-900 mt-8 mb-4">5. Servis Geçmişini Kayıt Altına Alın</h2>
+  <p>
+    Tüm servis geçmişinizi belgeleyin. Bu, hem uzatılmış garanti başvurusu hem de
+    ikinci el satışta ürünün değerini artırır. Düzenli bakım yapılmış ürünler daha
+    uzun ömürlüdür.
+  </p>
+
+  <h2 class="text-xl font-bold text-gray-900 mt-8 mb-4">6. Yazılım ve Firmware Güncellemelerini Yapın</h2>
+  <p>
+    Garantiniz bitmeden önce tüm yazılım güncellemelerini yapın. Güncel yazılım:
+  </p>
+  <ul class="list-disc pl-5 space-y-1">
+    <li>Güvenlik açıklarını kapatır</li>
+    <li>Performansı artırır</li>
+    <li>Batarya ömrünü optimize eder</li>
+    <li>Yeni özellikler ekler</li>
+  </ul>
+
+  <h2 class="text-xl font-bold text-gray-900 mt-8 mb-4">7. Garanti Sonrası Seçeneklerinizi Araştırın</h2>
+  <p>
+    Garantiniz bittikten sonra hangi seçenekleriniz olacak?
+  </p>
+  <ul class="list-disc pl-5 space-y-2">
+    <li>
+      <strong>Ücretli yetkili servis:</strong> En güvenilir ancak en pahalı seçenek.
+      Orijinal yedek parça kullanılır.
+    </li>
+    <li>
+      <strong>Özel servisler:</strong> Daha uygun fiyatlı ancak yedek parça kalitesi
+      değişken olabilir.
+    </li>
+    <li>
+      <strong>Ürün değişimi:</strong> Tamir maliyeti yeni ürün fiyatının %50'sinden
+      fazlaysa, yeni ürün almayı düşünün.
+    </li>
+  </ul>
+
+  <div class="bg-emerald-50 border border-emerald-200 rounded-lg p-4 mt-6">
+    <p class="text-sm text-emerald-800">
+      <strong>Hatırlatma:</strong> Garantinizin bitiş tarihini öğrenmek için
+      <a href="/sorgula" class="underline font-medium">garanti sorgulama aracımızı</a> kullanabilirsiniz.
+      Marka, kategori ve satın alma tarihinizi girin, kalan sürenizi anında öğrenin.
+    </p>
+  </div>
+</div>
+  `
+};
+
+const content = blogContent[post.slug] || '<p>İçerik bulunamadı.</p>';
+---
+
+<Layout
+  title={`${post.baslik} | GarantiSorgu`}
+  description={post.ozet}
+>
+  <article class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <nav class="text-sm text-gray-500 mb-6" aria-label="Breadcrumb">
+      <ol class="flex items-center gap-2">
+        <li><a href="/" class="hover:text-primary">Ana Sayfa</a></li>
+        <li><span class="text-gray-400">/</span></li>
+        <li><a href="/" class="hover:text-primary">Blog</a></li>
+        <li><span class="text-gray-400">/</span></li>
+        <li class="text-gray-900 font-medium truncate">{post.baslik}</li>
+      </ol>
+    </nav>
+
+    <header class="mb-8">
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4 leading-tight">
+        {post.baslik}
+      </h1>
+      <div class="flex flex-wrap items-center gap-4 text-sm text-gray-500">
+        <time datetime={post.tarih}>{new Date(post.tarih).toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' })}</time>
+        <span>&middot;</span>
+        <span>{post.yazar}</span>
+        <span>&middot;</span>
+        <span>{post.okuma_suresi_dk} dk okuma</span>
+      </div>
+      {post.etiketler && (
+        <div class="flex flex-wrap gap-2 mt-4">
+          {post.etiketler.map(etiket => (
+            <span class="bg-gray-100 text-gray-600 text-xs px-3 py-1 rounded-full">
+              {etiket}
+            </span>
+          ))}
+        </div>
+      )}
+    </header>
+
+    <div class="mb-8">
+      {content}
+    </div>
+
+    <div class="border-t border-gray-200 pt-8 mt-12">
+      <h3 class="text-lg font-bold text-gray-900 mb-4">Garantinizi Sorgulayın</h3>
+      <p class="text-gray-600 mb-4">
+        Bu yazıyı okuduktan sonra kendi ürününüzün garanti durumunu merak ediyorsanız,
+        hesaplayıcımızı kullanabilirsiniz.
+      </p>
+      <a href="/sorgula" class="btn-primary inline-block">
+        🛡️ Garantimi Sorgula
+      </a>
+    </div>
+  </article>
+</Layout>

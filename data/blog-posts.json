@@ -1,0 +1,49 @@
+{
+  "posts": [
+    {
+      "slug": "garanti-haklarim-neler",
+      "baslik": "Türkiye'de Tüketici Garanti Hakları: 6502 Sayılı Kanun Rehberi",
+      "ozet": "6502 sayılı Tüketici Koruma Kanunu kapsamında garanti haklarınızı öğrenin. Zorunlu garanti süreleri, garanti belgesi, iade hakları ve daha fazlası.",
+      "tarih": "2026-03-15",
+      "yazar": "GarantiSorgu Ekibi",
+      "etiketler": ["garanti hakları", "tüketici kanunu", "6502 sayılı kanun", "garanti belgesi"],
+      "okuma_suresi_dk": 8
+    },
+    {
+      "slug": "uzatilmis-garanti-deger-mi",
+      "baslik": "Uzatılmış Garanti Almaya Değer mi? Hesaplayalım",
+      "ozet": "Uzatılmış garanti gerçekten gerekli mi? Hangi ürünlerde mantıklı, hangilerinde gereksiz? Detaylı maliyet analizi ve karar rehberi.",
+      "tarih": "2026-03-20",
+      "yazar": "GarantiSorgu Ekibi",
+      "etiketler": ["uzatılmış garanti", "garanti maliyeti", "samsung care+", "apple care+"],
+      "okuma_suresi_dk": 7
+    },
+    {
+      "slug": "garanti-disi-kalan-arizalar",
+      "baslik": "Hangi Arızalar Garanti Kapsamı Dışındadır?",
+      "ozet": "Kullanıcı kaynaklı hasarlar, su hasarı, ekran çatlağı ve garanti dışı kalan diğer durumlar hakkında bilmeniz gereken her şey.",
+      "tarih": "2026-03-25",
+      "yazar": "GarantiSorgu Ekibi",
+      "etiketler": ["garanti kapsamı", "garanti dışı", "su hasarı", "ekran çatlağı"],
+      "okuma_suresi_dk": 6
+    },
+    {
+      "slug": "ikinci-el-urun-garanti",
+      "baslik": "İkinci El Ürünlerde Garanti: Haklarınız Neler?",
+      "ozet": "İkinci el aldığınız ürünlerde garanti devam eder mi? Fatura devri, yetkili servis hakları ve platform politikaları hakkında rehber.",
+      "tarih": "2026-03-28",
+      "yazar": "GarantiSorgu Ekibi",
+      "etiketler": ["ikinci el", "ikinci el garanti", "fatura devri", "letgo", "dolap"],
+      "okuma_suresi_dk": 6
+    },
+    {
+      "slug": "garanti-bitmeden-once-yapilacaklar",
+      "baslik": "Garantiniz Bitmeden Önce Yapmanız Gereken 7 Şey",
+      "ozet": "Garanti süreniz dolmadan önce yapmanız gereken kritik adımlar. Ücretsiz kontrol, batarya testi, uzatma garantisi kararı ve daha fazlası.",
+      "tarih": "2026-04-01",
+      "yazar": "GarantiSorgu Ekibi",
+      "etiketler": ["garanti bitmeden", "garanti kontrol", "uzatma garantisi", "servis geçmişi"],
+      "okuma_suresi_dk": 5
+    }
+  ]
+}

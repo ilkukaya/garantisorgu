@@ -1,0 +1,18 @@
+---
+import Layout from '../components/Layout.astro';
+import GarantiHesaplayici from '../components/GarantiHesaplayici.astro';
+---
+
+<Layout
+  title="Garanti Sorgulama — Detaylı Sorgulama | GarantiSorgu"
+  description="Marka, ürün kategorisi ve satın alma tarihi ile garanti bitiş tarihini hesaplayın. Kalan garanti sürenizi anında öğrenin."
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <h1 class="text-3xl font-extrabold text-gray-900 mb-2">Garanti Sorgulama</h1>
+    <p class="text-gray-600 mb-8">
+      Aşağıdaki hesaplayıcıyı kullanarak ürününüzün garanti bitiş tarihini, kalan süresini ve
+      ek garanti bilgilerini öğrenebilirsiniz.
+    </p>
+    <GarantiHesaplayici />
+  </div>
+</Layout>

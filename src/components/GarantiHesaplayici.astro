@@ -1,0 +1,303 @@
+---
+import { loadMarkalar, loadKategoriler } from '../lib/dataLoader';
+import { getTodayString, getMinPurchaseDate } from '../lib/dateHelpers';
+
+const markalar = loadMarkalar();
+const kategoriler = loadKategoriler();
+const populerMarkalar = markalar.markalar.slice(0, 10);
+const bugun = getTodayString();
+const minTarih = getMinPurchaseDate();
+---
+
+<div id="garanti-hesaplayici" class="card max-w-2xl mx-auto">
+  <h2 class="text-xl font-bold text-gray-900 mb-6">Garanti Bitiş Tarihini Hesapla</h2>
+
+  <form id="hesaplama-form" class="space-y-6">
+    <div>
+      <label class="label-text">1. Marka Seçin</label>
+      <div class="grid grid-cols-5 gap-2 mb-3">
+        {populerMarkalar.map(m => (
+          <button
+            type="button"
+            class="marka-btn flex flex-col items-center p-3 rounded-lg border-2 border-gray-200 hover:border-primary hover:bg-blue-50 transition-all text-center"
+            data-marka={m.id}
+            style={`--marka-renk: ${m.renk_hex}`}
+          >
+            <span class="text-lg font-bold" style={`color: ${m.renk_hex}`}>{m.ad.substring(0, 3)}</span>
+            <span class="text-xs text-gray-500 mt-1 truncate w-full">{m.ad}</span>
+          </button>
+        ))}
+      </div>
+      <select id="marka-select" class="input-field" required>
+        <option value="">Tüm markalar...</option>
+        {markalar.markalar.map(m => (
+          <option value={m.id}>{m.ad}</option>
+        ))}
+      </select>
+    </div>
+
+    <div id="kategori-step" class="hidden">
+      <label class="label-text">2. Ürün Kategorisi Seçin</label>
+      <div id="kategori-grid" class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+      </div>
+    </div>
+
+    <div id="tarih-step" class="hidden">
+      <label class="label-text">3. Satın Alma Tarihi</label>
+      <input
+        type="date"
+        id="satin-alma-tarihi"
+        class="input-field"
+        min={minTarih}
+        max={bugun}
+        required
+      />
+      <p class="text-xs text-gray-500 mt-1">Fatura tarihinizi giriniz</p>
+    </div>
+
+    <button
+      type="submit"
+      id="hesapla-btn"
+      class="btn-primary w-full text-lg py-4"
+      disabled
+    >
+      Garantimi Hesapla
+    </button>
+  </form>
+
+  <div id="sonuc-alani" class="mt-6 min-h-[200px]" aria-live="polite">
+  </div>
+</div>
+
+<script>
+  import { garantiHesapla } from '../lib/garantiHesapla';
+  import { formatTurkishDate, formatRelativeDays } from '../lib/dateHelpers';
+  import markalarData from '../../data/markalar.json';
+  import kategorilerData from '../../data/kategoriler.json';
+
+  const markalar = markalarData.markalar;
+  const kategoriler = kategorilerData.kategoriler;
+
+  const markaSelect = document.getElementById('marka-select') as HTMLSelectElement;
+  const kategoriStep = document.getElementById('kategori-step')!;
+  const kategoriGrid = document.getElementById('kategori-grid')!;
+  const tarihStep = document.getElementById('tarih-step')!;
+  const hesaplaBtn = document.getElementById('hesapla-btn') as HTMLButtonElement;
+  const sonucAlani = document.getElementById('sonuc-alani')!;
+  const form = document.getElementById('hesaplama-form') as HTMLFormElement;
+
+  let selectedMarka: string | null = null;
+  let selectedKategori: string | null = null;
+
+  function updateKategoriler(markaId: string) {
+    const marka = markalar.find(m => m.id === markaId);
+    if (!marka || !marka.kategoriler) return;
+
+    kategoriGrid.innerHTML = '';
+    const katIds = Object.keys(marka.kategoriler);
+
+    katIds.forEach(katId => {
+      const katData = marka.kategoriler[katId];
+      const katInfo = kategoriler.find(k => k.id === katId);
+      const ad = katInfo ? katInfo.ad : katId;
+      const ikon = katInfo ? katInfo.ikon : '📦';
+
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'kategori-btn flex flex-col items-center p-4 rounded-lg border-2 border-gray-200 hover:border-primary hover:bg-blue-50 transition-all';
+      btn.dataset.kategori = katId;
+      btn.innerHTML = `
+        <span class="text-2xl mb-1">${ikon}</span>
+        <span class="text-sm font-medium text-gray-800">${ad}</span>
+        <span class="text-xs text-gray-500">${katData.garanti_yil} yıl garanti</span>
+      `;
+      btn.addEventListener('click', () => selectKategori(katId));
+      kategoriGrid.appendChild(btn);
+    });
+
+    kategoriStep.classList.remove('hidden');
+    tarihStep.classList.add('hidden');
+    hesaplaBtn.disabled = true;
+    selectedKategori = null;
+  }
+
+  function selectKategori(katId: string) {
+    selectedKategori = katId;
+    document.querySelectorAll('.kategori-btn').forEach(btn => {
+      btn.classList.toggle('border-primary', btn.dataset.kategori === katId);
+      btn.classList.toggle('bg-blue-50', btn.dataset.kategori === katId);
+    });
+    tarihStep.classList.remove('hidden');
+    hesaplaBtn.disabled = false;
+  }
+
+  markaSelect.addEventListener('change', (e) => {
+    const val = (e.target as HTMLSelectElement).value;
+    if (val) {
+      selectedMarka = val;
+      updateKategoriler(val);
+    } else {
+      selectedMarka = null;
+      kategoriStep.classList.add('hidden');
+      tarihStep.classList.add('hidden');
+      hesaplaBtn.disabled = true;
+    }
+  });
+
+  document.querySelectorAll('.marka-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const markaId = btn.dataset.marka!;
+      selectedMarka = markaId;
+      markaSelect.value = markaId;
+      updateKategoriler(markaId);
+
+      document.querySelectorAll('.marka-btn').forEach(b => {
+        b.classList.toggle('border-primary', b.dataset.marka === markaId);
+        b.classList.toggle('bg-blue-50', b.dataset.marka === markaId);
+      });
+    });
+  });
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (!selectedMarka || !selectedKategori) return;
+
+    const tarihInput = document.getElementById('satin-alma-tarihi') as HTMLInputElement;
+    if (!tarihInput.value) return;
+
+    const sorgu = {
+      markaId: selectedMarka,
+      kategoriId: selectedKategori,
+      satin_alma_tarihi: new Date(tarihInput.value)
+    };
+
+    const sonuc = garantiHesapla(sorgu, markalarData, kategorilerData);
+    if (!sonuc) {
+      sonucAlani.innerHTML = '<p class="text-red-600">Hesaplama yapılamadı. Lütfen bilgileri kontrol edin.</p>';
+      return;
+    }
+
+    renderSonuc(sonuc);
+  });
+
+  function renderSonuc(sonuc: any) {
+    const durumRenk = sonuc.durum === 'aktif'
+      ? (sonuc.yuzde_kalan > 50 ? 'emerald' : sonuc.yuzde_kalan > 25 ? 'yellow' : 'orange')
+      : sonuc.durum === 'son_90_gun' ? 'orange'
+      : sonuc.durum === 'son_30_gun' ? 'red' : 'gray';
+
+    const durumBg = sonuc.durum === 'aktif'
+      ? 'bg-emerald-50 border-emerald-200'
+      : sonuc.durum === 'son_90_gun' ? 'bg-orange-50 border-orange-200'
+      : sonuc.durum === 'son_30_gun' ? 'bg-red-50 border-red-200'
+      : 'bg-gray-50 border-gray-200';
+
+    const durumIcon = sonuc.durum === 'aktif' ? '✅'
+      : sonuc.durum === 'son_90_gun' ? '⏳'
+      : sonuc.durum === 'son_30_gun' ? '⚠️' : '❌';
+
+    const durumText = sonuc.durum === 'aktif' ? 'Garantiniz Aktif'
+      : sonuc.durum === 'son_90_gun' ? 'Garantiniz Yakında Bitiyor'
+      : sonuc.durum === 'son_30_gun' ? 'Garantiniz Çok Yakında Bitiyor!' : 'Garanti Süresi Dolmuş';
+
+    const barColor = sonuc.yuzde_kalan > 50 ? 'bg-emerald-500'
+      : sonuc.yuzde_kalan > 25 ? 'bg-yellow-500'
+      : sonuc.yuzde_kalan > 10 ? 'bg-orange-500' : 'bg-red-500';
+
+    let ekGarantiHtml = '';
+    if (sonuc.ek_garanti_bitis && sonuc.ek_garanti_bitis.length > 0) {
+      ekGarantiHtml = `
+        <div class="mt-4 pt-4 border-t border-gray-200">
+          <h4 class="text-sm font-semibold text-gray-700 mb-2">Ek Garantiler</h4>
+          ${sonuc.ek_garanti_bitis.map((eg: any) => `
+            <div class="flex justify-between items-center text-sm py-1">
+              <span class="text-gray-600">${eg.aciklama}</span>
+              <span class="font-medium">${formatTurkishDate(new Date(eg.tarih))}</span>
+            </div>
+          `).join('')}
+        </div>
+      `;
+    }
+
+    let uyarilarHtml = '';
+    if (sonuc.uyarilar && sonuc.uyarilar.length > 0) {
+      uyarilarHtml = `
+        <div class="mt-4 pt-4 border-t border-gray-200 space-y-2">
+          ${sonuc.uyarilar.map((u: string) => `
+            <p class="text-sm text-gray-600">${u}</p>
+          `).join('')}
+        </div>
+      `;
+    }
+
+    let ctaHtml = '';
+    if (sonuc.durum === 'son_30_gun' || sonuc.durum === 'son_90_gun') {
+      ctaHtml = `
+        <div class="mt-4 pt-4 border-t border-gray-200 space-y-2">
+          ${sonuc.uzatma_url ? `
+            <a href="${sonuc.uzatma_url}" target="_blank" rel="noopener" class="btn-primary w-full text-center block text-sm">
+              🛡️ Garantini Uzat
+            </a>
+          ` : ''}
+          ${sonuc.musteri_hizmetleri_web ? `
+            <a href="${sonuc.musteri_hizmetleri_web}" target="_blank" rel="noopener" class="btn-secondary w-full text-center block text-sm">
+              📞 Yetkili Servis
+            </a>
+          ` : ''}
+        </div>
+      `;
+    } else if (sonuc.durum === 'bitmis') {
+      ctaHtml = `
+        <div class="mt-4 pt-4 border-t border-gray-200 space-y-2">
+          ${sonuc.musteri_hizmetleri_tel ? `
+            <a href="tel:${sonuc.musteri_hizmetleri_tel}" class="btn-primary w-full text-center block text-sm">
+              📞 ${sonuc.musteri_hizmetleri_tel} — Servis Ara
+            </a>
+          ` : ''}
+          <a href="https://www.amazon.com.tr/s?k=elektronik" target="_blank" rel="noopener" class="btn-secondary w-full text-center block text-sm">
+            🛒 Yeni Ürün Fiyatlarını Gör
+          </a>
+        </div>
+      `;
+    }
+
+    sonucAlani.innerHTML = `
+      <div class="${durumBg} border-2 rounded-xl p-6">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="text-3xl">${durumIcon}</span>
+          <div>
+            <h3 class="text-lg font-bold text-gray-900">${durumText}</h3>
+            <p class="text-sm text-gray-600">${sonuc.marka_adi} — ${sonuc.kategori_adi}</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4 mb-4">
+          <div>
+            <p class="text-xs text-gray-500 uppercase">Satın Alma</p>
+            <p class="font-semibold text-gray-900">${formatTurkishDate(new Date(sonuc.satin_alma_tarihi))}</p>
+          </div>
+          <div>
+            <p class="text-xs text-gray-500 uppercase">Garanti Bitiş</p>
+            <p class="font-semibold text-gray-900">${formatTurkishDate(new Date(sonuc.garanti_bitis_tarihi))}</p>
+          </div>
+        </div>
+
+        <div class="mb-2">
+          <div class="flex justify-between text-sm mb-1">
+            <span class="text-gray-600">${formatRelativeDays(sonuc.kalan_gun)}</span>
+            <span class="font-medium text-gray-700">%${sonuc.yuzde_kalan} kaldı</span>
+          </div>
+          <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+            <div class="${barColor} h-3 rounded-full transition-all duration-700" style="width: ${sonuc.yuzde_kalan}%"></div>
+          </div>
+        </div>
+
+        ${ekGarantiHtml}
+        ${uyarilarHtml}
+        ${ctaHtml}
+      </div>
+    `;
+
+    sonucAlani.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+</script>

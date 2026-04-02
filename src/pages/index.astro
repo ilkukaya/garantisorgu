@@ -1,0 +1,200 @@
+---
+import Layout from '../components/Layout.astro';
+import GarantiHesaplayici from '../components/GarantiHesaplayici.astro';
+import MarkaKarti from '../components/MarkaKarti.astro';
+import UrunKategorisi from '../components/UrunKategorisi.astro';
+import FAQAccordion from '../components/FAQAccordion.astro';
+import { loadMarkalar, loadKategoriler } from '../lib/dataLoader';
+
+const markalar = loadMarkalar();
+const kategoriler = loadKategoriler();
+
+const populerAramalar = [
+  { label: 'iPhone Garantisi', href: '/marka/apple', ikon: '📱' },
+  { label: 'Samsung TV Garantisi', href: '/marka/samsung', ikon: '📺' },
+  { label: 'Arçelik Buzdolabı', href: '/marka/arcelik', ikon: '🧊' },
+  { label: 'MacBook Garantisi', href: '/marka/apple', ikon: '💻' },
+  { label: 'Bosch Çamaşır Makinesi', href: '/marka/bosch', ikon: '🫧' },
+  { label: 'Dyson Süpürge', href: '/marka/dyson', ikon: '🌀' },
+];
+
+const sssSorulari = [
+  {
+    baslik: 'Türkiye\'de yasal garanti süresi kaç yıl?',
+    icerik: '6502 sayılı Tüketici Koruma Kanunu\'na göre elektronik ürünler, beyaz eşya ve küçük ev aletleri için zorunlu garanti süresi 2 yıldır. Bazı markalar gönüllü olarak bu süreyi uzatabilir (örneğin kompresör veya motor için 10 yıl ek garanti).'
+  },
+  {
+    baslik: 'Garanti belgesi olmasa da ürün garanti kapsamında mıdır?',
+    icerik: 'Evet. Türk Tüketici Kanunu\'na göre fatura, yasal garanti belgesi yerine geçer. Ancak garantiyi kanıtlamak için orijinal faturanızı mutlaka saklayın.'
+  },
+  {
+    baslik: 'İkinci el aldığım ürün için garanti geçerli mi?',
+    icerik: 'Yasal garanti, ilk satın alma tarihinden itibaren başlar ve genellikle ürüne bağlıdır. Fatura sahibi değişse de servis hizmeti alabilirsiniz, ancak uygulamalar markaya göre farklılık gösterebilir.'
+  },
+  {
+    baslik: 'Garanti süresi içinde arıza çıkarsa ne yapmalıyım?',
+    icerik: 'Ürünü orijinal faturanızla birlikte markanın yetkili servisine götürün. Yetkili servis, garanti kapsamındaki arızaları ücretsiz onarmakla yükümlüdür. Tamir 30 iş günü içinde tamamlanamıyorsa değişim hakkınız doğar.'
+  },
+  {
+    baslik: 'Ekran çatlağı garanti kapsamında mıdır?',
+    icerik: 'Hayır. Fiziksel hasar (düşürme, çarpma) ve ekran çatlakları garanti kapsamı dışındadır çünkü kullanıcı kaynaklı hasar sayılır.'
+  }
+];
+
+const howToSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "Garanti Bitiş Tarihi Nasıl Öğrenilir",
+  "description": "4 adımda ürününüzün garanti bitiş tarihini öğrenin.",
+  "step": [
+    { "@type": "HowToStep", "name": "Markayı seçin", "text": "Garantisini sorgulamak istediğiniz ürünün markasını seçin." },
+    { "@type": "HowToStep", "name": "Ürün kategorisini seçin", "text": "Telefon, TV, buzdolabı gibi ürün kategorisini belirleyin." },
+    { "@type": "HowToStep", "name": "Satın alma tarihini girin", "text": "Faturanızdaki satın alma tarihini girin." },
+    { "@type": "HowToStep", "name": "Garanti bitiş tarihinizi görün", "text": "Garanti bitiş tarihi, kalan süre ve ek garanti bilgilerini görüntüleyin." }
+  ]
+});
+
+const webAppSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Garanti Sorgulama Aracı",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Web",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "TRY" }
+});
+---
+
+<Layout
+  title="Garanti Sorgulama — Ürün Garantiniz Ne Zaman Bitiyor?"
+  description="Arçelik, Samsung, Apple, LG ve 20+ marka için garanti bitiş tarihi hesaplayıcı. Satın alma tarihini gir, kalan garanti süresini anında öğren."
+  schemaMarkup={`${howToSchema}\n${webAppSchema}`}
+>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-blue-600 to-blue-800 text-white py-16 sm:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-4 leading-tight">
+        Ürün Garantiniz Ne Zaman Bitiyor?
+      </h1>
+      <p class="text-lg sm:text-xl text-blue-100 max-w-2xl mx-auto mb-8">
+        Marka, ürün kategorisi ve satın alma tarihini seç, garanti bitiş tarihini anında öğren.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4 text-sm text-blue-200">
+        <span class="flex items-center gap-1">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          20+ Marka
+        </span>
+        <span class="flex items-center gap-1">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          Anında Hesaplama
+        </span>
+        <span class="flex items-center gap-1">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          Tamamen Ücretsiz
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hesaplayıcı -->
+  <section class="py-12 sm:py-16 -mt-8 relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <GarantiHesaplayici />
+    </div>
+  </section>
+
+  <!-- Popüler Aramalar -->
+  <section class="py-12 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">En Çok Sorgulanan Garantiler</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+        {populerAramalar.map(arama => (
+          <a
+            href={arama.href}
+            class="flex flex-col items-center p-4 rounded-xl border border-gray-200 hover:border-primary hover:shadow-md transition-all bg-gray-50 hover:bg-blue-50"
+          >
+            <span class="text-2xl mb-2">{arama.ikon}</span>
+            <span class="text-sm font-medium text-gray-700 text-center">{arama.label}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Markalar -->
+  <section class="py-12 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between mb-8">
+        <h2 class="text-2xl font-bold text-gray-900">Garanti Bilgisi Olan Markalar</h2>
+        <a href="/marka/" class="text-primary hover:text-primary-dark font-medium text-sm">
+          Tümünü gör →
+        </a>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+        {markalar.markalar.slice(0, 10).map(marka => (
+          <MarkaKarti marka={marka} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Kategoriler -->
+  <section class="py-12 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between mb-8">
+        <h2 class="text-2xl font-bold text-gray-900">Ürün Kategorileri</h2>
+        <a href="/kategori/" class="text-primary hover:text-primary-dark font-medium text-sm">
+          Tümünü gör →
+        </a>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+        {kategoriler.kategoriler.map(kategori => (
+          <UrunKategorisi kategori={kategori} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Yasal Bilgi Kutusu -->
+  <section class="py-12 bg-blue-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white rounded-xl p-6 sm:p-8 border border-blue-100 shadow-sm">
+        <h2 class="text-xl font-bold text-gray-900 mb-4">📋 Türkiye'de Yasal Garanti Hakları</h2>
+        <div class="prose prose-sm text-gray-600 space-y-3">
+          <p>
+            <strong>6502 Sayılı Tüketici Koruma Kanunu</strong> kapsamında, Türkiye'de satılan tüm elektronik ürünler,
+            beyaz eşyalar ve küçük ev aletleri için <strong>zorunlu garanti süresi 2 yıldır</strong>.
+          </p>
+          <p>
+            Bu süre, ürünün teslim tarihinden itibaren başlar. Garanti süresince ortaya çıkan arızalar,
+            yetkili servis tarafından <strong>ücretsiz</strong> olarak giderilir.
+          </p>
+          <p>
+            Bazı markalar, yasal zorunluluğun ötesinde ek garanti süreleri sunmaktadır.
+            Örneğin buzdolabı kompresörleri ve çamaşır makinesi motorları için 10 yıla kadar
+            ek garanti verilebilmektedir.
+          </p>
+          <p class="text-sm text-gray-500">
+            Detaylı bilgi için: <a href="/blog/garanti-haklarim-neler" class="text-primary hover:underline">Garanti Hakları Rehberi →</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SSS -->
+  <section class="py-12 bg-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">Sıkça Sorulan Sorular</h2>
+      <div class="space-y-3">
+        {sssSorulari.map(soru => (
+          <FAQAccordion baslik={soru.baslik} icerik={soru.icerik} />
+        ))}
+      </div>
+      <div class="text-center mt-8">
+        <a href="/sss" class="text-primary hover:text-primary-dark font-medium">
+          Tüm SSS'leri gör →
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

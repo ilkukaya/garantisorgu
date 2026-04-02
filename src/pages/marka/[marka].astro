@@ -1,0 +1,195 @@
+---
+import Layout from '../../components/Layout.astro';
+import GarantiHesaplayici from '../../components/GarantiHesaplayici.astro';
+import FAQAccordion from '../../components/FAQAccordion.astro';
+import { loadMarkaBySlug, loadMarkalar } from '../../lib/dataLoader';
+import { formatTurkishDate } from '../../lib/dateHelpers';
+
+export function getStaticPaths() {
+  const markalar = loadMarkalar();
+  return markalar.markalar.map((marka: any) => ({
+    params: { marka: marka.slug },
+    props: { marka }
+  }));
+}
+
+const { marka } = Astro.props;
+const markalar = loadMarkalar();
+const kategoriListesi = marka.kategoriler ? Object.entries(marka.kategoriler) : [];
+
+const kategoriTablosu = kategoriListesi.map(([katId, katData]: [string, any]) => {
+  const ekGaranti = [];
+  if (katData.kompressor_garanti_yil) ekGaranti.push(`Kompresör: ${katData.kompressor_garanti_yil} yıl`);
+  if (katData.motor_garanti_yil) ekGaranti.push(`Motor: ${katData.motor_garanti_yil} yıl`);
+  if (katData.panel_garanti_yil) ekGaranti.push(`Panel: ${katData.panel_garanti_yil} yıl`);
+
+  const katInfo = markalar.kategoriler?.find((k: any) => k.id === katId);
+  return {
+    id: katId,
+    ad: katInfo ? katInfo.ad : katId,
+    ikon: katInfo ? katInfo.ikon : '📦',
+    garanti_yil: katData.garanti_yil,
+    ek_garanti: ekGaranti.join(', ') || '—',
+    notlar: katData.notlar || ''
+  };
+});
+
+const sssSorulari = [
+  {
+    baslik: `${marka.ad} ürünlerinin garanti süresi kaç yıl?`,
+    icerik: `${marka.ad} ürünlerinde standart garanti süresi 2 yıldır. Bazı ürün kategorilerinde (kompresör, motor, panel) ek garanti süreleri uygulanmaktadır.`
+  },
+  {
+    baslik: `${marka.ad} garanti sorgulaması nasıl yapılır?`,
+    icerik: `${marka.ad} ürününüzün garanti durumunu öğrenmek için fatura tarihinizi ve ürün kategorinizi yukarıdaki hesaplayıcıya girin. Ayrıca ${marka.musteri_hizmetleri_web ? marka.musteri_hizmetleri_web : 'resmi web sitesinden'} de sorgulama yapabilirsiniz.`
+  },
+  {
+    baslik: `${marka.ad} yetkili servis numarası nedir?`,
+    icerik: marka.musteri_hizmetleri_tel
+      ? `${marka.ad} müşteri hizmetleri numarası: ${marka.musteri_hizmetleri_tel}. Bu numarayı arayarak yetkili servis randevusu alabilirsiniz.`
+      : `${marka.ad} müşteri hizmetleri bilgisi için resmi web sitesini ziyaret edin.`
+  }
+];
+
+const faqSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": sssSorulari.map(s => ({
+    "@type": "Question",
+    "name": s.baslik,
+    "acceptedAnswer": { "@type": "Answer", "text": s.icerik }
+  }))
+});
+
+const breadcrumbSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Ana Sayfa", "item": "https://garantisorgu.com" },
+    { "@type": "ListItem", "position": 2, "name": "Markalar", "item": "https://garantisorgu.com/marka/" },
+    { "@type": "ListItem", "position": 3, "name": marka.ad, "item": `https://garantisorgu.com/marka/${marka.slug}` }
+  ]
+});
+---
+
+<Layout
+  title={`${marka.ad} Garanti Süresi 2026 — Ürün Bazlı Garanti Bilgileri`}
+  description={`${marka.ad} ürünleri için garanti süreleri. Satın alma tarihini gir, garanti bitiş tarihini öğren. Müşteri hizmetleri ve yetkili servis bilgileri.`}
+  schemaMarkup={`${faqSchema}\n${breadcrumbSchema}`}
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <nav class="text-sm text-gray-500 mb-6" aria-label="Breadcrumb">
+      <ol class="flex items-center gap-2">
+        <li><a href="/" class="hover:text-primary">Ana Sayfa</a></li>
+        <li><span class="text-gray-400">/</span></li>
+        <li><a href="/marka/" class="hover:text-primary">Markalar</a></li>
+        <li><span class="text-gray-400">/</span></li>
+        <li class="text-gray-900 font-medium">{marka.ad}</li>
+      </ol>
+    </nav>
+
+    <!-- Marka Başlık -->
+    <div class="flex flex-col sm:flex-row items-start gap-6 mb-10">
+      <div
+        class="w-20 h-20 rounded-2xl flex items-center justify-center text-white font-bold text-2xl flex-shrink-0"
+        style={`background-color: ${marka.renk_hex}`}
+      >
+        {marka.ad.substring(0, 2).toUpperCase()}
+      </div>
+      <div>
+        <h1 class="text-3xl font-extrabold text-gray-900">{marka.ad} Garanti Süresi ve Bilgileri</h1>
+        <p class="text-gray-600 mt-2">
+          {marka.ulke_koken && `${marka.ulke_koken} menşeli`}
+          {marka.musteri_hizmetleri_tel && ` — Müşteri Hizmetleri: ${marka.musteri_hizmetleri_tel}`}
+        </p>
+        <div class="flex flex-wrap gap-3 mt-4">
+          {marka.musteri_hizmetleri_web && (
+            <a href={marka.musteri_hizmetleri_web} target="_blank" rel="noopener" class="btn-secondary text-sm">
+              🌐 Resmi Web Sitesi
+            </a>
+          )}
+          {marka.garanti_sorgulama_url && (
+            <a href={marka.garanti_sorgulama_url} target="_blank" rel="noopener" class="btn-secondary text-sm">
+              🔍 Garanti Sorgula
+            </a>
+          )}
+          {marka.garanti_tescil_url && (
+            <a href={marka.garanti_tescil_url} target="_blank" rel="noopener" class="btn-secondary text-sm">
+              📝 Garanti Tescil
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
+
+    <!-- Hızlı Hesaplayıcı -->
+    <div class="mb-12">
+      <GarantiHesaplayici />
+    </div>
+
+    <!-- Kategori Tablosu -->
+    <div class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">{marka.ad} Garanti Süreleri Tablosu</h2>
+      <div class="overflow-x-auto rounded-xl border border-gray-200">
+        <table class="w-full text-sm">
+          <thead class="bg-gray-50">
+            <tr>
+              <th class="text-left px-4 py-3 font-semibold text-gray-700">Ürün Kategorisi</th>
+              <th class="text-center px-4 py-3 font-semibold text-gray-700">Garanti Süresi</th>
+              <th class="text-left px-4 py-3 font-semibold text-gray-700">Ek Garanti</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-100">
+            {kategoriTablosu.map(kat => (
+              <tr class="hover:bg-gray-50">
+                <td class="px-4 py-3">
+                  <span class="mr-2">{kat.ikon}</span>
+                  {kat.ad}
+                </td>
+                <td class="px-4 py-3 text-center font-semibold text-gray-900">
+                  {kat.garanti_yil} yıl
+                </td>
+                <td class="px-4 py-3 text-gray-600">
+                  {kat.ek_garanti}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Müşteri Hizmetleri -->
+    <div class="bg-gray-50 rounded-xl p-6 mb-12">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">📞 {marka.ad} Müşteri Hizmetleri</h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        {marka.musteri_hizmetleri_tel && (
+          <div class="bg-white rounded-lg p-4 border border-gray-200">
+            <p class="text-sm text-gray-500">Telefon</p>
+            <a href={`tel:${marka.musteri_hizmetleri_tel}`} class="text-lg font-bold text-primary hover:underline">
+              {marka.musteri_hizmetleri_tel}
+            </a>
+          </div>
+        )}
+        {marka.musteri_hizmetleri_web && (
+          <div class="bg-white rounded-lg p-4 border border-gray-200">
+            <p class="text-sm text-gray-500">Web</p>
+            <a href={marka.musteri_hizmetleri_web} target="_blank" rel="noopener" class="text-lg font-bold text-primary hover:underline break-all">
+              {marka.musteri_hizmetleri_web}
+            </a>
+          </div>
+        )}
+      </div>
+    </div>
+
+    <!-- SSS -->
+    <div class="max-w-3xl">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">{marka.ad} Hakkında Sıkça Sorulan Sorular</h2>
+      <div class="space-y-3">
+        {sssSorulari.map(soru => (
+          <FAQAccordion baslik={soru.baslik} icerik={soru.icerik} />
+        ))}
+      </div>
+    </div>
+  </div>
+</Layout>

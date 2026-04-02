@@ -1,0 +1,29 @@
+---
+interface Props {
+  kategori: {
+    id: string;
+    ad: string;
+    slug: string;
+    ikon: string;
+    aciklama?: string;
+  };
+  garantiYil?: number;
+}
+
+const { kategori, garantiYil } = Astro.props;
+---
+
+<a
+  href={`/kategori/${kategori.slug}`}
+  class="group flex flex-col items-center p-5 rounded-xl border-2 border-gray-200 hover:border-primary hover:shadow-md transition-all bg-white text-center"
+>
+  <span class="text-3xl mb-2">{kategori.ikon}</span>
+  <span class="text-sm font-semibold text-gray-800 group-hover:text-primary transition-colors">
+    {kategori.ad}
+  </span>
+  {garantiYil && (
+    <span class="text-xs text-gray-500 mt-1">
+      {garantiYil} yıl garanti
+    </span>
+  )}
+</a>

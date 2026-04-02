@@ -1,0 +1,99 @@
+---
+const currentYear = new Date().getFullYear();
+
+const footerLinks = {
+  markalar: [
+    { label: 'Arçelik', href: '/marka/arcelik' },
+    { label: 'Beko', href: '/marka/beko' },
+    { label: 'Samsung', href: '/marka/samsung' },
+    { label: 'Apple', href: '/marka/apple' },
+    { label: 'LG', href: '/marka/lg' },
+    { label: 'Bosch', href: '/marka/bosch' },
+    { label: 'Vestel', href: '/marka/vestel' },
+    { label: 'Sony', href: '/marka/sony' },
+  ],
+  kategoriler: [
+    { label: 'Cep Telefonu', href: '/kategori/cep-telefonu' },
+    { label: 'Televizyon', href: '/kategori/televizyon' },
+    { label: 'Buzdolabı', href: '/kategori/buzdolabi' },
+    { label: 'Çamaşır Makinesi', href: '/kategori/camasir-makinesi' },
+    { label: 'Laptop', href: '/kategori/laptop' },
+    { label: 'Elektrikli Süpürge', href: '/kategori/elektrikli-supurge' },
+  ],
+  bilgi: [
+    { label: 'Garanti Haklarım', href: '/blog/garanti-haklarim-neler' },
+    { label: 'SSS', href: '/sss' },
+    { label: 'Hakkımızda', href: '/hakkinda' },
+  ],
+};
+---
+
+<footer class="bg-gray-900 text-gray-300 mt-auto">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+      <div class="col-span-2 md:col-span-1">
+        <a href="/" class="flex items-center gap-2 text-xl font-bold text-white mb-4">
+          <span class="text-2xl">🛡️</span>
+          <span>Garanti<span class="text-blue-400">Sorgu</span></span>
+        </a>
+        <p class="text-sm text-gray-400 leading-relaxed">
+          Türkiye'nin ilk kapsamlı ürün garanti süresi sorgulama platformu.
+          6502 sayılı Tüketici Koruma Kanunu bilgilerini kamuya açık kaynaklardan derler.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Popüler Markalar</h3>
+        <ul class="space-y-2">
+          {footerLinks.markalar.map(link => (
+            <li>
+              <a href={link.href} class="text-sm hover:text-white transition-colors">
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Kategoriler</h3>
+        <ul class="space-y-2">
+          {footerLinks.kategoriler.map(link => (
+            <li>
+              <a href={link.href} class="text-sm hover:text-white transition-colors">
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Bilgi</h3>
+        <ul class="space-y-2">
+          {footerLinks.bilgi.map(link => (
+            <li>
+              <a href={link.href} class="text-sm hover:text-white transition-colors">
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <div class="border-t border-gray-800 mt-10 pt-8">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-xs text-gray-500 text-center md:text-left">
+          &copy; {currentYear} GarantiSorgu.com — Bu site resmi hukuki danışmanlık değildir.
+          Bilgiler kamuya açık kaynaklardan derlenmiştir.
+        </p>
+        <div class="flex gap-4 text-xs text-gray-500">
+          <a href="/hakkinda" class="hover:text-white transition-colors">Gizlilik Politikası</a>
+          <span>&middot;</span>
+          <a href="/hakkinda" class="hover:text-white transition-colors">KVKK</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

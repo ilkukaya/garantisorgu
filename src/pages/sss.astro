@@ -1,0 +1,108 @@
+---
+import Layout from '../../components/Layout.astro';
+import FAQAccordion from '../../components/FAQAccordion.astro';
+
+const sssList = [
+  {
+    baslik: 'Türkiye\'de yasal garanti süresi kaç yıl?',
+    icerik: '6502 sayılı Tüketici Koruma Kanunu\'na göre elektronik ürünler, beyaz eşya ve küçük ev aletleri için zorunlu garanti süresi 2 yıldır. Bazı markalar gönüllü olarak bu süreyi uzatabilir (örneğin kompresör veya motor için 10 yıl ek garanti).'
+  },
+  {
+    baslik: 'Garanti belgesi olmasa da ürün garanti kapsamında mıdır?',
+    icerik: 'Evet. Türk Tüketici Kanunu\'na göre fatura, yasal garanti belgesi yerine geçer. Ancak garantiyi kanıtlamak için orijinal faturanızı mutlaka saklayın.'
+  },
+  {
+    baslik: 'İkinci el aldığım ürün için garanti geçerli mi?',
+    icerik: 'Yasal garanti, ilk satın alma tarihinden itibaren başlar ve genellikle ürüne bağlıdır. Fatura sahibi değişse de servis hizmeti alabilirsiniz, ancak uygulamalar markaya göre farklılık gösterebilir.'
+  },
+  {
+    baslik: 'Garanti süresi içinde arıza çıkarsa ne yapmalıyım?',
+    icerik: 'Ürünü orijinal faturanızla birlikte markanın yetkili servisine götürün. Yetkili servis, garanti kapsamındaki arızaları ücretsiz onarmakla yükümlüdür. Tamir 30 iş günü içinde tamamlanamıyorsa değişim hakkınız doğar.'
+  },
+  {
+    baslik: 'Garantim bitti, şimdi ne yapabilirim?',
+    icerik: 'Ücretli yetkili servis veya özel servis seçenekleriniz var. Bazı markalar garanti sonrası uzatma paketi sunar. Uzatılmış garanti satın almak için ürünün servis geçmişinin temiz olması genellikle şarttır.'
+  },
+  {
+    baslik: 'Uzatılmış garanti almaya değer mi?',
+    icerik: 'Değer analizi ürüne göre değişir. Yüksek değerli, kompleks ürünlerde (buzdolabı, TV, laptop) değebilir. Basit küçük ev aletlerinde genellikle değmez çünkü değiştirme maliyeti düşüktür.'
+  },
+  {
+    baslik: 'Garanti süresi içinde kaç kez tamir hakkım var?',
+    icerik: 'Aynı arıza için yasal üst sınır belirlenmemiştir, ancak aynı arızanın 4 kez tekrarlaması durumunda ürün değişimi talep edebilirsiniz.'
+  },
+  {
+    baslik: 'Yetkisiz servise götürürsem garantim düşer mi?',
+    icerik: 'Evet, çoğu marka yetkisiz servis müdahalesi sonrası garantiyi geçersiz saymaktadır. Garanti kapsamındaki onarımlar için mutlaka yetkili servisi tercih edin.'
+  },
+  {
+    baslik: 'Ekran çatlağı garanti kapsamında mıdır?',
+    icerik: 'Hayır. Fiziksel hasar (düşürme, çarpma) ve ekran çatlakları garanti kapsamı dışındadır çünkü kullanıcı kaynaklı hasar sayılır.'
+  },
+  {
+    baslik: 'Su hasarı garanti kapsamında mıdır?',
+    icerik: 'Hayır. Su/sıvı hasarı standart garanti kapsamı dışındadır. Bazı IP68 sertifikalı telefonlarda su geçirmezlik belirli koşullarda garanti kapsamında olabilir ama bu standartta değil markaya göre değişir.'
+  },
+  {
+    baslik: 'Garanti süresi dolmuş ürün için ücretsiz servis alınabilir mi?',
+    icerik: 'Hayır. Garanti süresi dolduktan sonra servis ücretlidir. Ancak bazı markalar sadakat programları veya kampanyalarla indirimli servis sunabilmektedir.'
+  },
+  {
+    baslik: 'İnternetten aldığım ürünün garanti süresi farklı mı?',
+    icerik: 'Hayır. İster mağazadan ister internetten alın, garanti süresi aynıdır. Garanti, ürünün teslim tarihinden itibaren başlar ve yasal süreler aynıdır.'
+  },
+  {
+    baslik: 'Yurtdışından aldığım ürün Türkiye\'de garanti kapsamında mı?',
+    icerik: 'Genellikle hayır. Yurtdışından alınan ürünler Türkiye\'de garanti kapsamında olmayabilir. Bazı global markalar uluslararası garanti sunsa da, bu markaya göre değişir. Satın almadan önce kontrol edin.'
+  },
+  {
+    baslik: 'Batarya garantisi neden daha kısa?',
+    icerik: 'Bataryalar tüketilebilir parça olarak kabul edilir ve genellikle 1 yıl garanti ile gelir. Bu, sektör genelinde yaygın bir uygulamadır.'
+  },
+  {
+    baslik: 'Garanti belgesini kaybettim, ne yapmalıyım?',
+    icerik: 'Garanti belgesi kaybı garanti hakkınızı ortadan kaldırmaz. Faturanız garanti belgesi yerine geçer. Faturanız da yoksa, kredi kartı ekstresi veya mağaza kayıtları ile satın almanızı kanıtlayabilirsiniz.'
+  },
+  {
+    baslik: 'Garanti süresi içinde ürün değişimi nasıl talep edilir?',
+    icerik: 'Aynı arızanın tekrarlaması veya tamirin 30 iş gününü aşması durumunda ürün değişimi talep edebilirsiniz. Tüketici Hakem Heyetine başvurarak yasal hakkınızı kullanabilirsiniz.'
+  }
+];
+
+const faqSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": sssList.map(s => ({
+    "@type": "Question",
+    "name": s.baslik,
+    "acceptedAnswer": { "@type": "Answer", "text": s.icerik }
+  }))
+});
+---
+
+<Layout
+  title="Sıkça Sorulan Sorular — Garanti Hakkında Her Şey | GarantiSorgu"
+  description="Garanti süresi, garanti hakları, ikinci el garanti, uzatılmış garanti ve daha fazlası hakkında sıkça sorulan sorular ve cevapları."
+  schemaMarkup={faqSchema}
+>
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <nav class="text-sm text-gray-500 mb-6" aria-label="Breadcrumb">
+      <ol class="flex items-center gap-2">
+        <li><a href="/" class="hover:text-primary">Ana Sayfa</a></li>
+        <li><span class="text-gray-400">/</span></li>
+        <li class="text-gray-900 font-medium">SSS</li>
+      </ol>
+    </nav>
+
+    <h1 class="text-3xl font-extrabold text-gray-900 mb-2">Sıkça Sorulan Sorular</h1>
+    <p class="text-gray-600 mb-8">
+      Garanti süreleri, garanti hakları ve uzatılmış garanti hakkında merak edilen tüm soruların cevapları.
+    </p>
+
+    <div class="space-y-3">
+      {sssList.map(soru => (
+        <FAQAccordion baslik={soru.baslik} icerik={soru.icerik} />
+      ))}
+    </div>
+  </div>
+</Layout>

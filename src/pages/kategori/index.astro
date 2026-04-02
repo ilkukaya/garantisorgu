@@ -1,0 +1,31 @@
+---
+import Layout from '../components/Layout.astro';
+import UrunKategorisi from '../components/UrunKategorisi.astro';
+import { loadKategoriler } from '../lib/dataLoader';
+
+const kategoriler = loadKategoriler();
+---
+
+<Layout
+  title="Ürün Kategorileri — Garanti Süreleri | GarantiSorgu"
+  description="Cep telefonu, televizyon, buzdolabı, çamaşır makinesi ve daha fazla kategori için garanti sürelerini karşılaştırın."
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <nav class="text-sm text-gray-500 mb-6" aria-label="Breadcrumb">
+      <ol class="flex items-center gap-2">
+        <li><a href="/" class="hover:text-primary">Ana Sayfa</a></li>
+        <li><span class="text-gray-400">/</span></li>
+        <li class="text-gray-900 font-medium">Kategoriler</li>
+      </ol>
+    </nav>
+
+    <h1 class="text-3xl font-extrabold text-gray-900 mb-2">Ürün Kategorileri</h1>
+    <p class="text-gray-600 mb-8">Kategori seçin, tüm markaların garanti sürelerini karşılaştırın.</p>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+      {kategoriler.kategoriler.map(kategori => (
+        <UrunKategorisi kategori={kategori} />
+      ))}
+    </div>
+  </div>
+</Layout>

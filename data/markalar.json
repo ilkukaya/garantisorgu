@@ -1,0 +1,525 @@
+{
+  "son_guncelleme": "2026-04-01",
+  "kaynak_notu": "Veriler marka resmi web sitesi ve Türkiye Tüketici Kanunu 6502'ye dayanmaktadır.",
+  "markalar": [
+    {
+      "id": "arcelik",
+      "ad": "Arçelik",
+      "slug": "arcelik",
+      "logo": "/logos/arcelik.svg",
+      "renk_hex": "#E31E24",
+      "ulke_koken": "Türkiye",
+      "musteri_hizmetleri_tel": "0800 211 44 44",
+      "musteri_hizmetleri_web": "https://www.arcelik.com.tr/servis",
+      "garanti_tescil_url": "https://www.arcelik.com.tr/garanti-tescil",
+      "kategoriler": {
+        "buzdolabi": {
+          "garanti_yil": 2,
+          "kompressor_garanti_yil": 10,
+          "notlar": "Kompresöre 10 yıl ayrıca garanti verilmektedir.",
+          "kaynak": "Arçelik resmi garanti belgesi 2024"
+        },
+        "camasir-makinesi": {
+          "garanti_yil": 2,
+          "motor_garanti_yil": 10,
+          "notlar": "Motora 10 yıl ayrıca garanti.",
+          "kaynak": "Arçelik resmi garanti belgesi 2024"
+        },
+        "bulasik-makinesi": {
+          "garanti_yil": 2,
+          "motor_garanti_yil": 5,
+          "notlar": "Motora 5 yıl ayrıca garanti."
+        },
+        "televizyon": {
+          "garanti_yil": 2,
+          "panel_garanti_yil": 3,
+          "notlar": "OLED panel ürünlerde panel garantisi 3 yıl."
+        },
+        "klima": {
+          "garanti_yil": 2,
+          "kompressor_garanti_yil": 5
+        },
+        "kucuk-ev-aleti": {
+          "garanti_yil": 2
+        },
+        "elektrikli-supurge": {
+          "garanti_yil": 2
+        },
+        "derin-dondurucu": {
+          "garanti_yil": 2,
+          "kompressor_garanti_yil": 10
+        }
+      }
+    },
+    {
+      "id": "beko",
+      "ad": "Beko",
+      "slug": "beko",
+      "logo": "/logos/beko.svg",
+      "renk_hex": "#0055A5",
+      "ulke_koken": "Türkiye",
+      "musteri_hizmetleri_tel": "0800 599 98 00",
+      "musteri_hizmetleri_web": "https://www.beko.com.tr/servis",
+      "kategoriler": {
+        "buzdolabi": {
+          "garanti_yil": 2,
+          "kompressor_garanti_yil": 10,
+          "notlar": "Arçelik grubu, aynı kompresör garantisi."
+        },
+        "camasir-makinesi": {
+          "garanti_yil": 2,
+          "motor_garanti_yil": 10
+        },
+        "bulasik-makinesi": {
+          "garanti_yil": 2
+        },
+        "televizyon": {
+          "garanti_yil": 2
+        },
+        "klima": {
+          "garanti_yil": 2,
+          "kompressor_garanti_yil": 5
+        },
+        "kucuk-ev-aleti": {
+          "garanti_yil": 2
+        }
+      }
+    },
+    {
+      "id": "samsung",
+      "ad": "Samsung",
+      "slug": "samsung",
+      "logo": "/logos/samsung.svg",
+      "renk_hex": "#1428A0",
+      "ulke_koken": "Güney Kore",
+      "musteri_hizmetleri_tel": "444 77 11",
+      "musteri_hizmetleri_web": "https://www.samsung.com/tr/support",
+      "garanti_sorgulama_url": "https://www.samsung.com/tr/support/warranty",
+      "kategoriler": {
+        "cep-telefonu": {
+          "garanti_yil": 2,
+          "notlar": "Türkiye'de yasal 2 yıl. Samsung Care+ uzatma mevcut.",
+          "uzatma_url": "https://www.samsung.com/tr/samsung-care-plus/"
+        },
+        "tablet": {
+          "garanti_yil": 2
+        },
+        "televizyon": {
+          "garanti_yil": 2,
+          "panel_garanti_yil": 3,
+          "notlar": "Neo QLED ve OLED modellerde panel 3 yıl garanti."
+        },
+        "buzdolabi": {
+          "garanti_yil": 2,
+          "kompressor_garanti_yil": 10
+        },
+        "camasir-makinesi": {
+          "garanti_yil": 2,
+          "motor_garanti_yil": 10,
+          "notlar": "Digital Inverter Motor 10 yıl garanti."
+        },
+        "laptop": {
+          "garanti_yil": 2
+        },
+        "kucuk-ev-aleti": {
+          "garanti_yil": 2
+        },
+        "monitor": {
+          "garanti_yil": 2,
+          "panel_garanti_yil": 3
+        },
+        "akilli-saat": {
+          "garanti_yil": 2
+        },
+        "kulaklik": {
+          "garanti_yil": 1,
+          "notlar": "Galaxy Buds: 1 yıl garanti. Türkiye yasal minimumun altında, dikkat."
+        }
+      }
+    },
+    {
+      "id": "apple",
+      "ad": "Apple",
+      "slug": "apple",
+      "logo": "/logos/apple.svg",
+      "renk_hex": "#555555",
+      "ulke_koken": "ABD",
+      "musteri_hizmetleri_tel": "0850 220 14 25",
+      "musteri_hizmetleri_web": "https://getsupport.apple.com",
+      "garanti_sorgulama_url": "https://checkcoverage.apple.com",
+      "kategoriler": {
+        "cep-telefonu": {
+          "garanti_yil": 2,
+          "notlar": "Apple'ın kendi garantisi 1 yıldır ancak Türkiye yasal zorunluluğu 2 yıldır. Apple Care+ ile 2 yıl ek uzatma mevcut.",
+          "uzatma_url": "https://www.apple.com/tr/support/products/iphone/"
+        },
+        "laptop": {
+          "garanti_yil": 2,
+          "notlar": "MacBook serisi. Apple Care+ ile uzatılabilir.",
+          "uzatma_url": "https://www.apple.com/tr/support/products/mac/"
+        },
+        "tablet": {
+          "garanti_yil": 2,
+          "notlar": "iPad serisi."
+        },
+        "akilli-saat": {
+          "garanti_yil": 2,
+          "notlar": "Apple Watch. Band garantisi 1 yıldır."
+        },
+        "kulaklik": {
+          "garanti_yil": 2,
+          "notlar": "AirPods serisi. Kablo ve aksesuarlar 1 yıl."
+        },
+        "masaustu-bilgisayar": {
+          "garanti_yil": 2,
+          "notlar": "iMac, Mac mini, Mac Pro serisi."
+        }
+      }
+    },
+    {
+      "id": "lg",
+      "ad": "LG",
+      "slug": "lg",
+      "logo": "/logos/lg.svg",
+      "renk_hex": "#A50034",
+      "ulke_koken": "Güney Kore",
+      "musteri_hizmetleri_tel": "444 54 54",
+      "musteri_hizmetleri_web": "https://www.lg.com/tr/support",
+      "kategoriler": {
+        "televizyon": {
+          "garanti_yil": 2,
+          "panel_garanti_yil": 3,
+          "notlar": "OLED ve QNED TV'lerde panel garantisi 3 yıl."
+        },
+        "cep-telefonu": {
+          "garanti_yil": 2,
+          "notlar": "LG Türkiye telefon üretimini 2021'de durdurmuştur. Mevcut cihazlar için servis devam etmektedir."
+        },
+        "buzdolabi": {
+          "garanti_yil": 2,
+          "kompressor_garanti_yil": 10,
+          "notlar": "Linear Compressor 10 yıl garanti."
+        },
+        "camasir-makinesi": {
+          "garanti_yil": 2,
+          "motor_garanti_yil": 10,
+          "notlar": "DD Motor 10 yıl garanti."
+        },
+        "klima": {
+          "garanti_yil": 2,
+          "kompressor_garanti_yil": 5
+        },
+        "laptop": {
+          "garanti_yil": 2,
+          "notlar": "LG Gram serisi."
+        },
+        "monitor": {
+          "garanti_yil": 2,
+          "panel_garanti_yil": 3,
+          "notlar": "UltraFine serisi 3 yıl panel."
+        }
+      }
+    },
+    {
+      "id": "bosch",
+      "ad": "Bosch",
+      "slug": "bosch",
+      "logo": "/logos/bosch.svg",
+      "renk_hex": "#E20015",
+      "ulke_koken": "Almanya",
+      "musteri_hizmetleri_tel": "0850 252 26 74",
+      "musteri_hizmetleri_web": "https://www.bosch-home.com/tr/",
+      "kategoriler": {
+        "buzdolabi": {
+          "garanti_yil": 2,
+          "kompressor_garanti_yil": 10
+        },
+        "camasir-makinesi": {
+          "garanti_yil": 2,
+          "motor_garanti_yil": 5
+        },
+        "bulasik-makinesi": {
+          "garanti_yil": 2
+        },
+        "kucuk-ev-aleti": {
+          "garanti_yil": 2
+        },
+        "elektrikli-supurge": {
+          "garanti_yil": 2
+        },
+        "firin": {
+          "garanti_yil": 2
+        }
+      }
+    },
+    {
+      "id": "siemens",
+      "ad": "Siemens",
+      "slug": "siemens",
+      "logo": "/logos/siemens.svg",
+      "renk_hex": "#009999",
+      "ulke_koken": "Almanya",
+      "musteri_hizmetleri_tel": "0850 266 43 67",
+      "musteri_hizmetleri_web": "https://www.siemens-home.bsh-group.com/tr/",
+      "not": "BSH Grubu (Bosch ile aynı altyapı). Garanti süreleri Bosch ile özdeş.",
+      "kategoriler": {
+        "buzdolabi": { "garanti_yil": 2, "kompressor_garanti_yil": 10 },
+        "camasir-makinesi": { "garanti_yil": 2, "motor_garanti_yil": 5 },
+        "bulasik-makinesi": { "garanti_yil": 2 },
+        "kucuk-ev-aleti": { "garanti_yil": 2 },
+        "firin": { "garanti_yil": 2 }
+      }
+    },
+    {
+      "id": "vestel",
+      "ad": "Vestel",
+      "slug": "vestel",
+      "logo": "/logos/vestel.svg",
+      "renk_hex": "#003087",
+      "ulke_koken": "Türkiye",
+      "musteri_hizmetleri_tel": "444 88 88",
+      "musteri_hizmetleri_web": "https://www.vestel.com.tr/servis",
+      "kategoriler": {
+        "televizyon": { "garanti_yil": 2 },
+        "buzdolabi": {
+          "garanti_yil": 2,
+          "kompressor_garanti_yil": 5
+        },
+        "camasir-makinesi": { "garanti_yil": 2 },
+        "klima": { "garanti_yil": 2, "kompressor_garanti_yil": 3 },
+        "kucuk-ev-aleti": { "garanti_yil": 2 },
+        "cep-telefonu": { "garanti_yil": 2 }
+      }
+    },
+    {
+      "id": "philips",
+      "ad": "Philips",
+      "slug": "philips",
+      "logo": "/logos/philips.svg",
+      "renk_hex": "#0B0082",
+      "ulke_koken": "Hollanda",
+      "musteri_hizmetleri_tel": "0800 261 33 02",
+      "musteri_hizmetleri_web": "https://www.philips.com.tr/support",
+      "kategoriler": {
+        "televizyon": { "garanti_yil": 2 },
+        "kucuk-ev-aleti": { "garanti_yil": 2 },
+        "elektrikli-supurge": { "garanti_yil": 2 },
+        "sacbakimi": { "garanti_yil": 2 },
+        "tras-makina": { "garanti_yil": 2 },
+        "ses-sistemi": { "garanti_yil": 2 },
+        "monitor": { "garanti_yil": 2, "panel_garanti_yil": 3 }
+      }
+    },
+    {
+      "id": "sony",
+      "ad": "Sony",
+      "slug": "sony",
+      "logo": "/logos/sony.svg",
+      "renk_hex": "#000000",
+      "ulke_koken": "Japonya",
+      "musteri_hizmetleri_tel": "0850 200 76 69",
+      "musteri_hizmetleri_web": "https://www.sony.com.tr/support",
+      "kategoriler": {
+        "televizyon": {
+          "garanti_yil": 2,
+          "panel_garanti_yil": 3,
+          "notlar": "BRAVIA XR OLED modellerde panel 3 yıl garanti."
+        },
+        "ses-sistemi": { "garanti_yil": 2 },
+        "kulaklik": { "garanti_yil": 2 },
+        "kamera": { "garanti_yil": 2 },
+        "playstation": {
+          "garanti_yil": 2,
+          "notlar": "PS5, PS4 ve aksesuarlar."
+        },
+        "cep-telefonu": {
+          "garanti_yil": 2,
+          "notlar": "Xperia serisi."
+        }
+      }
+    },
+    {
+      "id": "xiaomi",
+      "ad": "Xiaomi",
+      "slug": "xiaomi",
+      "logo": "/logos/xiaomi.svg",
+      "renk_hex": "#FF6900",
+      "ulke_koken": "Çin",
+      "musteri_hizmetleri_tel": "0850 304 50 95",
+      "musteri_hizmetleri_web": "https://www.mi.com/tr/service",
+      "kategoriler": {
+        "cep-telefonu": {
+          "garanti_yil": 2,
+          "notlar": "Resmi distribütörden alınan cihazlar için geçerlidir."
+        },
+        "tablet": { "garanti_yil": 2 },
+        "akilli-saat": { "garanti_yil": 1, "notlar": "Band'lar 1 yıl, saatler 2 yıl." },
+        "kulaklik": { "garanti_yil": 1 },
+        "scooter": { "garanti_yil": 1 },
+        "robot-supurge": { "garanti_yil": 2 },
+        "televizyon": { "garanti_yil": 2 }
+      }
+    },
+    {
+      "id": "huawei",
+      "ad": "Huawei",
+      "slug": "huawei",
+      "logo": "/logos/huawei.svg",
+      "renk_hex": "#CF0A2C",
+      "ulke_koken": "Çin",
+      "musteri_hizmetleri_tel": "0850 888 50 55",
+      "musteri_hizmetleri_web": "https://consumer.huawei.com/tr/support",
+      "kategoriler": {
+        "cep-telefonu": { "garanti_yil": 2 },
+        "tablet": { "garanti_yil": 2 },
+        "laptop": { "garanti_yil": 2, "notlar": "MateBook serisi." },
+        "akilli-saat": { "garanti_yil": 1 },
+        "kulaklik": { "garanti_yil": 1 }
+      }
+    },
+    {
+      "id": "dyson",
+      "ad": "Dyson",
+      "slug": "dyson",
+      "logo": "/logos/dyson.svg",
+      "renk_hex": "#C8102E",
+      "ulke_koken": "Birleşik Krallık",
+      "musteri_hizmetleri_tel": "0850 532 00 35",
+      "musteri_hizmetleri_web": "https://www.dyson.com.tr/support",
+      "kategoriler": {
+        "elektrikli-supurge": {
+          "garanti_yil": 2,
+          "notlar": "Dyson kendi garantisini 2 yıl sunmaktadır."
+        },
+        "sacbakimi": {
+          "garanti_yil": 2,
+          "notlar": "Airwrap, Supersonic, Corrale."
+        },
+        "hava-temizleyici": { "garanti_yil": 2 },
+        "fan-isitici": { "garanti_yil": 2 }
+      }
+    },
+    {
+      "id": "tefal",
+      "ad": "Tefal",
+      "slug": "tefal",
+      "logo": "/logos/tefal.svg",
+      "renk_hex": "#E3000B",
+      "ulke_koken": "Fransa",
+      "musteri_hizmetleri_tel": "0850 222 21 23",
+      "musteri_hizmetleri_web": "https://www.tefal.com.tr/destek",
+      "kategoriler": {
+        "kucuk-ev-aleti": { "garanti_yil": 2 },
+        "pisirme-aleti": { "garanti_yil": 2 },
+        "sacbakimi": { "garanti_yil": 2 },
+        "utu": { "garanti_yil": 2 }
+      }
+    },
+    {
+      "id": "grundig",
+      "ad": "Grundig",
+      "slug": "grundig",
+      "logo": "/logos/grundig.svg",
+      "renk_hex": "#000000",
+      "ulke_koken": "Almanya (Arçelik grubu)",
+      "musteri_hizmetleri_tel": "0800 211 44 44",
+      "musteri_hizmetleri_web": "https://www.arcelik.com.tr/servis",
+      "not": "Arçelik grubu markası. Servis Arçelik üzerinden.",
+      "kategoriler": {
+        "televizyon": { "garanti_yil": 2 },
+        "buzdolabi": { "garanti_yil": 2, "kompressor_garanti_yil": 10 },
+        "camasir-makinesi": { "garanti_yil": 2, "motor_garanti_yil": 10 },
+        "kucuk-ev-aleti": { "garanti_yil": 2 }
+      }
+    },
+    {
+      "id": "indesit",
+      "ad": "Indesit",
+      "slug": "indesit",
+      "logo": "/logos/indesit.svg",
+      "renk_hex": "#003DA5",
+      "ulke_koken": "İtalya (Whirlpool grubu)",
+      "musteri_hizmetleri_tel": "0850 266 43 67",
+      "kategoriler": {
+        "camasir-makinesi": { "garanti_yil": 2 },
+        "bulasik-makinesi": { "garanti_yil": 2 },
+        "buzdolabi": { "garanti_yil": 2 },
+        "firin": { "garanti_yil": 2 }
+      }
+    },
+    {
+      "id": "whirlpool",
+      "ad": "Whirlpool",
+      "slug": "whirlpool",
+      "logo": "/logos/whirlpool.svg",
+      "renk_hex": "#003DA5",
+      "ulke_koken": "ABD",
+      "musteri_hizmetleri_tel": "0850 266 43 67",
+      "kategoriler": {
+        "camasir-makinesi": { "garanti_yil": 2 },
+        "bulasik-makinesi": { "garanti_yil": 2 },
+        "buzdolabi": { "garanti_yil": 2 },
+        "firin": { "garanti_yil": 2 }
+      }
+    },
+    {
+      "id": "lenovo",
+      "ad": "Lenovo",
+      "slug": "lenovo",
+      "logo": "/logos/lenovo.svg",
+      "renk_hex": "#E2231A",
+      "ulke_koken": "Çin",
+      "musteri_hizmetleri_tel": "0850 800 53 68",
+      "musteri_hizmetleri_web": "https://support.lenovo.com/tr",
+      "garanti_sorgulama_url": "https://pcsupport.lenovo.com/tr/tr/warrantylookup",
+      "kategoriler": {
+        "laptop": {
+          "garanti_yil": 2,
+          "notlar": "ThinkPad serisi: 1 yıl fabrika + 1 yıl yasal uzatma. IdeaPad: 2 yıl."
+        },
+        "masaustu-bilgisayar": { "garanti_yil": 2 },
+        "tablet": { "garanti_yil": 2 },
+        "monitor": { "garanti_yil": 2 }
+      }
+    },
+    {
+      "id": "hp",
+      "ad": "HP",
+      "slug": "hp",
+      "logo": "/logos/hp.svg",
+      "renk_hex": "#0096D6",
+      "ulke_koken": "ABD",
+      "musteri_hizmetleri_web": "https://support.hp.com/tr-tr",
+      "garanti_sorgulama_url": "https://support.hp.com/tr-tr/checkwarranty",
+      "kategoriler": {
+        "laptop": { "garanti_yil": 2 },
+        "masaustu-bilgisayar": { "garanti_yil": 2 },
+        "yazici": {
+          "garanti_yil": 1,
+          "notlar": "HP yazıcılarda standart garanti 1 yıldır."
+        },
+        "monitor": { "garanti_yil": 2, "panel_garanti_yil": 3 }
+      }
+    },
+    {
+      "id": "karcher",
+      "ad": "Kärcher",
+      "slug": "karcher",
+      "logo": "/logos/karcher.svg",
+      "renk_hex": "#FFCC00",
+      "renk_text_hex": "#000000",
+      "ulke_koken": "Almanya",
+      "musteri_hizmetleri_tel": "0212 659 59 72",
+      "musteri_hizmetleri_web": "https://www.kaercher.com/tr/service",
+      "kategoriler": {
+        "basinc-yikayici": {
+          "garanti_yil": 2,
+          "notlar": "K serisi ev tipi: 2 yıl. Profesyonel seri: 1 yıl."
+        },
+        "elektrikli-supurge": { "garanti_yil": 2 },
+        "robot-supurge": { "garanti_yil": 2 },
+        "buhar-temizleyici": { "garanti_yil": 2 }
+      }
+    }
+  ]
+}

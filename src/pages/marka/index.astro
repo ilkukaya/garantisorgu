@@ -1,0 +1,32 @@
+---
+import Layout from '../components/Layout.astro';
+import MarkaKarti from '../components/MarkaKarti.astro';
+import { loadMarkalar } from '../lib/dataLoader';
+
+const markalar = loadMarkalar();
+const sortedMarkalar = [...markalar.markalar].sort((a, b) => a.ad.localeCompare(b.ad, 'tr'));
+---
+
+<Layout
+  title="Tüm Markalar — Garanti Süreleri ve Bilgileri | GarantiSorgu"
+  description="Arçelik, Samsung, Apple, LG, Bosch ve daha fazla marka için garanti sürelerini karşılaştırın. 20+ marka, güncel garanti bilgileri."
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <nav class="text-sm text-gray-500 mb-6" aria-label="Breadcrumb">
+      <ol class="flex items-center gap-2">
+        <li><a href="/" class="hover:text-primary">Ana Sayfa</a></li>
+        <li><span class="text-gray-400">/</span></li>
+        <li class="text-gray-900 font-medium">Markalar</li>
+      </ol>
+    </nav>
+
+    <h1 class="text-3xl font-extrabold text-gray-900 mb-2">Garanti Bilgisi Olan Markalar</h1>
+    <p class="text-gray-600 mb-8">A-Z sıralı tüm markalar. Garanti sürelerini öğrenmek için markaya tıklayın.</p>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+      {sortedMarkalar.map(marka => (
+        <MarkaKarti marka={marka} />
+      ))}
+    </div>
+  </div>
+</Layout>

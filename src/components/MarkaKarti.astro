@@ -1,0 +1,28 @@
+---
+interface Props {
+  marka: {
+    id: string;
+    ad: string;
+    slug: string;
+    renk_hex: string;
+    logo?: string;
+  };
+}
+
+const { marka } = Astro.props;
+---
+
+<a
+  href={`/marka/${marka.slug}`}
+  class="group flex flex-col items-center p-4 rounded-xl border-2 border-gray-200 hover:border-primary hover:shadow-md transition-all bg-white"
+>
+  <div
+    class="w-16 h-16 rounded-full flex items-center justify-center text-white font-bold text-xl mb-3"
+    style={`background-color: ${marka.renk_hex}`}
+  >
+    {marka.ad.substring(0, 2).toUpperCase()}
+  </div>
+  <span class="text-sm font-semibold text-gray-800 group-hover:text-primary transition-colors">
+    {marka.ad}
+  </span>
+</a>
